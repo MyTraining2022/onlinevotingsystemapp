@@ -18,6 +18,10 @@ public class ElectionOfficer implements Serializable {
 	
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7577162011224940408L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long officerId;
