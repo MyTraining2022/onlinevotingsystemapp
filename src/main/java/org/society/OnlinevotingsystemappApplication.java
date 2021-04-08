@@ -8,7 +8,7 @@ public class OnlinevotingsystemappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlinevotingsystemappApplication.class, args);
-		
+		//hrrdyrs
 	}
 
 }
