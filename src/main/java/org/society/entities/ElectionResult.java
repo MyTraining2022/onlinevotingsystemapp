@@ -23,7 +23,7 @@ public class ElectionResult implements Serializable{
 	private static final long serialVersionUID = 123456789L;
 	
 	@Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Temporal(value=TemporalType.DATE)
 	private Date pollingDate;
