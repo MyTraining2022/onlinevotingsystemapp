@@ -4,34 +4,30 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-
-
 @Entity
-public class ElectionResult implements Serializable{
-	
-	
-	
+public class ElectionResult implements Serializable {
+
 	private static final long serialVersionUID = 123456789L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Temporal(value=TemporalType.DATE)
+	@Temporal(value = TemporalType.DATE)
 	private Date pollingDate;
-	 //@OneToMany(mappedBy =                cascade=CascadeType.ALL)
-	// @JoinTable(name="author_book", joinColumns=@JoinColumn(name="book_id"),
-	// inverseJoinColumns=@JoinColumn(name="author_id"))
-	//private Set<NominatedCandidates> candidate;
-	private NominatedCandidates candidate;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "candidate_id")
+	private Set<NominatedCandidates> candidate;
 	private String cooperativeSocietyName;
 	private int totalSocietyVotes;
 	private int totalPolledVotes;
@@ -40,21 +36,22 @@ public class ElectionResult implements Serializable{
 	private float candidateVotesPercentage;
 	@NotNull(message = "Result should be should")
 	private String result;
-//Look for map mapping in jpa
+	// Make changes here
 	private CastedVote votes;
 
 	public ElectionResult() {
 		super();
 	}
 
-	public ElectionResult(long id, Date pollingDate, NominatedCandidates candidate, String coop_SocietyName,
+	public ElectionResult(long id, Date pollingDate, Set<NominatedCandidates> candidate, String cooperativeSocietyName,
 			int totalSocietyVotes, int totalPolledVotes, float totalPollingPercentage, int totalCandidateVotes,
-			float candidateVotesPercentage, String result, CastedVote votes) {
+			float candidateVotesPercentage, @NotNull(message = "Result should be should") String result,
+			CastedVote votes) {
 		super();
 		this.id = id;
 		this.pollingDate = pollingDate;
 		this.candidate = candidate;
-		this.cooperativeSocietyName = coop_SocietyName;
+		this.cooperativeSocietyName = cooperativeSocietyName;
 		this.totalSocietyVotes = totalSocietyVotes;
 		this.totalPolledVotes = totalPolledVotes;
 		this.totalPollingPercentage = totalPollingPercentage;
@@ -62,6 +59,18 @@ public class ElectionResult implements Serializable{
 		this.candidateVotesPercentage = candidateVotesPercentage;
 		this.result = result;
 		this.votes = votes;
+	}
+
+	public Set<NominatedCandidates> getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(Set<NominatedCandidates> candidate) {
+		this.candidate = candidate;
+	}
+
+	public void setCooperativeSocietyName(String cooperativeSocietyName) {
+		this.cooperativeSocietyName = cooperativeSocietyName;
 	}
 
 	public long getId() {
@@ -78,14 +87,6 @@ public class ElectionResult implements Serializable{
 
 	public void setPollingDate(Date pollingDate) {
 		this.pollingDate = pollingDate;
-	}
-
-	public NominatedCandidates getCandidate() {
-		return candidate;
-	}
-
-	public void setCandidate(NominatedCandidates candidate) {
-		this.candidate = candidate;
 	}
 
 	public String getCooperativeSocietyName() {
@@ -155,10 +156,10 @@ public class ElectionResult implements Serializable{
 	@Override
 	public String toString() {
 		return "ElectionResult [id=" + id + ", pollingDate=" + pollingDate + ", candidate=" + candidate
-				+ ", coop_SocietyName=" + cooperativeSocietyName + ", totalSocietyVotes=" + totalSocietyVotes
+				+ ", cooperativeSocietyName=" + cooperativeSocietyName + ", totalSocietyVotes=" + totalSocietyVotes
 				+ ", totalPolledVotes=" + totalPolledVotes + ", totalPollingPercentage=" + totalPollingPercentage
 				+ ", totalCandidateVotes=" + totalCandidateVotes + ", candidateVotesPercentage="
-				+ candidateVotesPercentage + ", result=" + result + "]";
+				+ candidateVotesPercentage + ", result=" + result + ", votes=" + votes + "]";
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.society.repository;
 
+
 import org.society.entities.ElectionResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
