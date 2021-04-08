@@ -32,7 +32,8 @@ public class ElectionResult implements Serializable{
 	 //@OneToMany(mappedBy =                cascade=CascadeType.ALL)
 	// @JoinTable(name="author_book", joinColumns=@JoinColumn(name="book_id"),
 	// inverseJoinColumns=@JoinColumn(name="author_id"))
-	private Set<NominatedCandidates> candidate;
+	//private Set<NominatedCandidates> candidate;
+	private NominatedCandidates candidate;
 	private String cooperativeSocietyName;
 	private int totalSocietyVotes;
 	private int totalPolledVotes;
@@ -89,12 +90,12 @@ public class ElectionResult implements Serializable{
 		this.candidate = candidate;
 	}
 
-	public String getCoop_SocietyName() {
-		return coop_SocietyName;
+	public String getCooperativeSocietyName() {
+		return cooperativeSocietyName;
 	}
 
 	public void setCoop_SocietyName(String coop_SocietyName) {
-		this.coop_SocietyName = coop_SocietyName;
+		this.cooperativeSocietyName = coop_SocietyName;
 	}
 
 	public int getTotalSocietyVotes() {
@@ -156,7 +157,7 @@ public class ElectionResult implements Serializable{
 	@Override
 	public String toString() {
 		return "ElectionResult [id=" + id + ", pollingDate=" + pollingDate + ", candidate=" + candidate
-				+ ", coop_SocietyName=" + coop_SocietyName + ", totalSocietyVotes=" + totalSocietyVotes
+				+ ", coop_SocietyName=" + cooperativeSocietyName + ", totalSocietyVotes=" + totalSocietyVotes
 				+ ", totalPolledVotes=" + totalPolledVotes + ", totalPollingPercentage=" + totalPollingPercentage
 				+ ", totalCandidateVotes=" + totalCandidateVotes + ", candidateVotesPercentage="
 				+ candidateVotesPercentage + ", result=" + result + "]";
