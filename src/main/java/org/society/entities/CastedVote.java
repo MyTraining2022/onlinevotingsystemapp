@@ -1,5 +1,5 @@
 package org.society.entities;
 
 public class CastedVote {
- //hello
+ //hello ritik
 }
