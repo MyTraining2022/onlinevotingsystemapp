@@ -8,20 +8,24 @@ package org.society.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Nominated_Candidates")
 public class NominatedCandidates implements Serializable {
 	
 	private static final long serialVersionUID = 99L;
 	@Id
+	@Column(name = "candidate_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long candidateId;
 	private String nominationFormNo;
-	private RegisteredSocietyVoters society_Voter;
+	private RegisteredSocietyVoters societyVoter;
 	private String partyName;
 	private String symbol;
 	private float securityDeposit;
@@ -39,7 +43,7 @@ public class NominatedCandidates implements Serializable {
 		super();
 		this.candidateId = candidateId;
 		this.nominationFormNo = nominationFormNo;
-		this.society_Voter = society_Voter;
+		this.societyVoter = society_Voter;
 		this.partyName = partyName;
 		this.symbol = symbol;
 		this.securityDeposit = securityDeposit;
@@ -65,11 +69,11 @@ public class NominatedCandidates implements Serializable {
 	}
 
 	public RegisteredSocietyVoters getSociety_Voter() {
-		return society_Voter;
+		return societyVoter;
 	}
 
 	public void setSociety_Voter(RegisteredSocietyVoters society_Voter) {
-		this.society_Voter = society_Voter;
+		this.societyVoter = society_Voter;
 	}
 
 	public String getPartyName() {
@@ -123,7 +127,7 @@ public class NominatedCandidates implements Serializable {
 	@Override
 	public String toString() {
 		return "NominatedCandidates [candidateId=" + candidateId + ", nominationFormNo=" + nominationFormNo
-				+ ", society_Voter=" + society_Voter + ", partyName=" + partyName + ", symbol=" + symbol
+				+ ", society_Voter=" + societyVoter + ", partyName=" + partyName + ", symbol=" + symbol
 				+ ", securityDeposit=" + securityDeposit + ", oathOrAffirmationSummited=" + oathOrAffirmationSummited
 				+ ", policeVerificationDone=" + policeVerificationDone + ", approvedByElectionOfficer="
 				+ approvedByElectionOfficer + "]";

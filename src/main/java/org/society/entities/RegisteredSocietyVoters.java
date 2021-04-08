@@ -10,12 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name = "Registered_Society_Voters")
 public class RegisteredSocietyVoters implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +40,7 @@ public class RegisteredSocietyVoters implements Serializable
 	private String reservationCategory;
 	@NotNull(message = "Name is Required")
 	private String mobileno;
-	@NotNull(message = "Name is Required")
+	@NotNull(message = "Email is Required")
 	private String emailId;
 	private String addressLine1;
 	private String addressLine2;
@@ -44,8 +48,8 @@ public class RegisteredSocietyVoters implements Serializable
 	private String district;
 	private int pincode;
 	
-	@ManyToMany
-	//@JoinTable(name="author_book", joinColumns=@JoinColumn(name="book_id"), inverseJoinColumns=@JoinColumn(name="author_id")) 
+	@OneToOne
+	@JoinColumn(name = "society_id")
 	private CooperativeSociety society;
 	
 	private boolean castedVote;

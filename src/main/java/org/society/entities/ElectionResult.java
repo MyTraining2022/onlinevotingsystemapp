@@ -28,13 +28,14 @@ public class ElectionResult implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "candidate_id")
 	private Set<NominatedCandidates> candidate;
+	@NotNull(message = "Cooperative Society Name can not be null")
 	private String cooperativeSocietyName;
 	private int totalSocietyVotes;
 	private int totalPolledVotes;
 	private float totalPollingPercentage;
 	private int totalCandidateVotes;
 	private float candidateVotesPercentage;
-	@NotNull(message = "Result should be should")
+	@NotNull(message = "Result can not be null")
 	private String result;
 	// Make changes here
 	private CastedVote votes;
