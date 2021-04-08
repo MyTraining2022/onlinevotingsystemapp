@@ -1,3 +1,7 @@
+/*
+ * @author- Govind Kidambi
+ */
+
 package org.society.entities;
 
 public class NominatedCandidates {
