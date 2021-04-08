@@ -1,6 +1,13 @@
 package org.society.entities;
-
 import java.io.Serializable;
+
+/*
+ * @author Shobhit Kumar Shaw 
+ * 
+ * Class Description: 
+ * 
+ */
+
 
 public class Admin implements Serializable {
 	
@@ -10,7 +17,16 @@ public class Admin implements Serializable {
 	private String adminName;
 	private String adminPassword;
 	
-	
+	public Admin() {
+		super();
+		
+	}
+	public Admin(long adminId, String adminName, String adminPassword) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminPassword = adminPassword;
+	}
 	public long getAdminId() {
 		return adminId;
 	}
@@ -29,9 +45,13 @@ public class Admin implements Serializable {
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
 	}
+	
+	
 	
 
 }
