@@ -37,7 +37,7 @@ public class ElectionResult implements Serializable {
 	private float candidateVotesPercentage;
 	@NotNull(message = "Result can not be null")
 	private String result;
-	// Make changes here
+	// Make changes here if required while implementing Dao
 	private CastedVote votes;
 
 	public ElectionResult() {

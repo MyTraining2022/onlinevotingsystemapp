@@ -11,12 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+
 
 @Entity
 @Table(name = "Registered_Society_Voters")
@@ -27,6 +28,7 @@ public class RegisteredSocietyVoters implements Serializable
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
+	@NotBlank(message = "Voter Id number can not be null")
 	private String voterIdCardNo;
 	@NotNull(message = "Name is Required")
 	@Length(min = 5, max = 30, message= "Name size must be between 5 and 30")

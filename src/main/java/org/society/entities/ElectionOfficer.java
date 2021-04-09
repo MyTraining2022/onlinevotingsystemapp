@@ -8,6 +8,7 @@ package org.society.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class ElectionOfficer implements Serializable {
 	private static final long serialVersionUID = 99L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "officer_id")
 	private Long officerId;
 	private String firstName;
 	private String lastName;
