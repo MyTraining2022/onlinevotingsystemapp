@@ -7,6 +7,7 @@ import java.time.LocalTime;
 
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class VotedList implements Serializable {
 	@Column(name = "Voter_id")
 	private long id;
 
-	@Temporal(TemporalType.DATE)
+	@Basic
 	private LocalDate pollingDateTime;
 
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -48,9 +49,9 @@ public class VotedList implements Serializable {
 	@JoinTable(name = "Voter_list_Nominated_Candidates", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "candidate_id"))
 	private List<NominatedCandidates> candidate;
 
-	@Temporal(TemporalType.TIME)
+	@Basic
 	private LocalTime startTime;
-	@Temporal(TemporalType.TIME)
+	@Basic
 	private LocalTime endTime;
 
 	public VotedList() {
