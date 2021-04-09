@@ -39,6 +39,26 @@ public class ElectionOfficer implements Serializable {
 		
 	}
 	
+	
+	
+	public ElectionOfficer(Long officerId, String firstName, String lastName, String password, String gender,
+			String mobileno, String emailId, String address1, String address2, String district, int pincode) {
+		super();
+		this.officerId = officerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.gender = gender;
+		this.mobileno = mobileno;
+		this.emailId = emailId;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.district = district;
+		this.pincode = pincode;
+	}
+
+
+
 	public Long getOfficerId() {
 		return officerId;
 	}
