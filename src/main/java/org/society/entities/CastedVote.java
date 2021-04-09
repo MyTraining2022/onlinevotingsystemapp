@@ -30,7 +30,7 @@ public class CastedVote implements Serializable {
 	private Long id;
 
 	@ElementCollection
-	@CollectionTable(name = "nominated_candidates_casted_votek_mapping", joinColumns = {
+	@CollectionTable(name = "nominated_candidates_casted_voter_mapping", joinColumns = {
 			@JoinColumn(name = "castd_vote_id", referencedColumnName = "id") })
 	@MapKeyColumn(name = "Nominated_Candidates")
 	@Column(name = "total_votes")

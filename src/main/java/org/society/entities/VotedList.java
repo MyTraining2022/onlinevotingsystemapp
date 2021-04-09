@@ -17,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
 
 /*
@@ -43,7 +41,7 @@ public class VotedList implements Serializable {
 			@JoinColumn(name = "Voter_id") }, inverseJoinColumns = { @JoinColumn(name = "society_id") })
 	private List<CooperativeSociety> society;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Voter_list_Registered_Society_Voters", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	@JoinTable(name = "Voter_list_Registered_Society_Voters", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "reg_voter_id"))
 	private List<RegisteredSocietyVoters> voter;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Voter_list_Nominated_Candidates", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "candidate_id"))

@@ -6,6 +6,7 @@ package org.society.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +28,7 @@ public class RegisteredSocietyVoters implements Serializable
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "reg_voter_id")
 	private long id;
 	@NotBlank(message = "Voter Id number can not be null")
 	private String voterIdCardNo;
