@@ -11,7 +11,7 @@ public class DBInitElectionResult implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-	//	repo.save(new ElectionResult(333L, , null, null, 0, 0, 0, 0, 0, null));
+	repo.save(new ElectionResult(333L, 24/03/2020, null, "Saran", 3000, 56, 23f, 10, 7, "Win"));
 	}
 	
 	
