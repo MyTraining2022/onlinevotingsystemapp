@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 @Component
-public class ElectionResultImp implements ElectionResultDao{
+public class ElectionResultDaoImp implements ElectionResultDao{
 	@Autowired
 	ElectionResultRepository repository;
 	@Override
-	public int addElectionResult(ElectionResult result) {
+	public int addElectionResult(ElectionResult result)throws DuplicateEntityFoundException {
 		if(repository.existsById(result.getId()))
 		{
 			throw new DuplicateEntityFoundException("Duplicate Election Result found");
