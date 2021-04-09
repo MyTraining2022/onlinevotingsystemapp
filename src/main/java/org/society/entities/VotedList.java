@@ -1,13 +1,11 @@
-/*
- * @author: Aditya Mohapatra
- */
 
 package org.society.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.Set;
+
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,53 +15,47 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn; 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+
+/*
+ * @author: Aditya Mohapatra
+ */
 
 @Entity
 @Table(name = "Voter_list")
-public class VotedList implements Serializable
-{
-	private static final long serialVersionUID = 1L;
+public class VotedList implements Serializable {
+	private static final long serialVersionUID = 856L;
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Voter_id")
 	private long id;
-	
-	private Date pollingDateTime;
-	
-	@ManyToMany(cascade=CascadeType.ALL) 
-	@JoinTable(name = "Voter_list_Cooperative_Society", joinColumns = { @JoinColumn(name = "Voter_id") }, inverseJoinColumns = { @JoinColumn(name = "society_id") })
-	private Set<CooperativeSociety> society;
-	@ManyToMany(cascade=CascadeType.ALL) 
-	@JoinTable(name="Voter_list_Registered_Society_Voters", joinColumns=@JoinColumn(name="Voter_id"), inverseJoinColumns=@JoinColumn(name="author_id")) 
-	private Set<RegisteredSocietyVoters> voter;
-	@ManyToMany(cascade=CascadeType.ALL) 
-	@JoinTable(name="Voter_list_Nominated_Candidates", joinColumns=@JoinColumn(name="Voter_id"), inverseJoinColumns=@JoinColumn(name= "candidate_id")) 
-	private Set<NominatedCandidates> candidate;
-	
+
+	@Temporal(TemporalType.DATE)
+	private LocalDate pollingDateTime;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Voter_list_Cooperative_Society", joinColumns = {
+			@JoinColumn(name = "Voter_id") }, inverseJoinColumns = { @JoinColumn(name = "society_id") })
+	private List<CooperativeSociety> society;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Voter_list_Registered_Society_Voters", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private List<RegisteredSocietyVoters> voter;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Voter_list_Nominated_Candidates", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "candidate_id"))
+	private List<NominatedCandidates> candidate;
+
+	@Temporal(TemporalType.TIME)
 	private LocalTime startTime;
+	@Temporal(TemporalType.TIME)
 	private LocalTime endTime;
-	
+
 	public VotedList() {
 		super();
 	}
-
-	
-	public VotedList(long id, Date pollingDateTime, Set<CooperativeSociety> society, Set<RegisteredSocietyVoters> voter,
-			Set<NominatedCandidates> candidate, LocalTime startTime, LocalTime endTime) {
-		super();
-		this.id = id;
-		this.pollingDateTime = pollingDateTime;
-		this.society = society;
-		this.voter = voter;
-		this.candidate = candidate;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
-
 
 	public long getId() {
 		return id;
@@ -73,35 +65,35 @@ public class VotedList implements Serializable
 		this.id = id;
 	}
 
-	public Date getPollingDateTime() {
+	public LocalDate getPollingDateTime() {
 		return pollingDateTime;
 	}
 
-	public void setPollingDateTime(Date pollingDateTime) {
+	public void setPollingDateTime(LocalDate pollingDateTime) {
 		this.pollingDateTime = pollingDateTime;
 	}
 
-	public Set<CooperativeSociety> getSociety() {
+	public List<CooperativeSociety> getSociety() {
 		return society;
 	}
 
-	public void setSociety(Set<CooperativeSociety> society) {
+	public void setSociety(List<CooperativeSociety> society) {
 		this.society = society;
 	}
 
-	public Set<RegisteredSocietyVoters> getVoter() {
+	public List<RegisteredSocietyVoters> getVoter() {
 		return voter;
 	}
 
-	public void setVoter(Set<RegisteredSocietyVoters> voter) {
+	public void setVoter(List<RegisteredSocietyVoters> voter) {
 		this.voter = voter;
 	}
 
-	public Set<NominatedCandidates> getCandidate() {
+	public List<NominatedCandidates> getCandidate() {
 		return candidate;
 	}
 
-	public void setCandidate(Set<NominatedCandidates> candidate) {
+	public void setCandidate(List<NominatedCandidates> candidate) {
 		this.candidate = candidate;
 	}
 
@@ -121,15 +113,10 @@ public class VotedList implements Serializable
 		this.endTime = endTime;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
 		return "VotedList [id=" + id + ", pollingDateTime=" + pollingDateTime + ", society=" + society + ", voter="
 				+ voter + ", candidate=" + candidate + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
-	
-	
+
 }
