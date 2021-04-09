@@ -10,6 +10,8 @@ public class ElectionResultServiceImpl implements ElectionResultService{
 	@Override
 	public int addElectionResult(ElectionResult result) {
 		
+		return -1;
+		
 	}
 
 	@Override

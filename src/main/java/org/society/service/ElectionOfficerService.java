@@ -6,7 +6,7 @@ import org.society.entities.ElectionOfficer;
 
 public interface ElectionOfficerService {
 
-	public int addElectionOfficerDetails(ElectionOfficer officer);
+	public boolean addElectionOfficerDetails(ElectionOfficer officer);
 
 	public int updateElectionOfficerDetails(ElectionOfficer officer);
 

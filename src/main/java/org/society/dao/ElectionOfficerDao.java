@@ -7,14 +7,14 @@ import org.society.exceptions.ElectionOfficerNotFoundException;
 
 public interface ElectionOfficerDao {
 	
-	public int addElectionOfficerDetails(ElectionOfficer officer);
+	public void save(ElectionOfficer officer);
 
-	public int updateElectionOfficerDetails(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
+	public boolean update(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
 
-	public int deleteElectionOfficer(int officerId) throws ElectionOfficerNotFoundException;
+	public boolean delete(int officerId) throws ElectionOfficerNotFoundException;
 
-	public ElectionOfficer viewElectionOfficerById(int officerId) throws ElectionOfficerNotFoundException;
+	public ElectionOfficer getElectionOfficerById(int officerId) throws ElectionOfficerNotFoundException;
 
-	public List<ElectionOfficer> viewElectionOfficerList();
+	public List<ElectionOfficer> getElectionOfficerList();
 	
 }
