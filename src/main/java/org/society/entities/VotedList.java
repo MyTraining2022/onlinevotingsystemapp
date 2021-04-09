@@ -44,11 +44,11 @@ public class VotedList implements Serializable {
 	private CooperativeSociety society; // no list
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Voter_id")
+	@JoinColumn(name = "Voter_list_id")
 	private List<RegisteredSocietyVoters> voter;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Voter_id")
+	@JoinColumn(name = "Voter_list_id")
 	private List<NominatedCandidates> candidate;
 
 	//
