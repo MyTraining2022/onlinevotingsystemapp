@@ -5,6 +5,7 @@ import java.util.List;
 import org.society.entities.NominatedCandidates;
 
 public interface NominatedCandidatesService {
+	
 	public int addNominatedCandidate(NominatedCandidates candidate);
 
 	public int updateNominatedCandidateDetails(NominatedCandidates candidate);

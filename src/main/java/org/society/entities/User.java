@@ -20,7 +20,7 @@ public class User implements  Serializable  {
 	private String lastName;
 	private String email;
 	private String contactno;
-	private String userType;
+	private String userType; // only two type
 	
 	public User() {
 		super();

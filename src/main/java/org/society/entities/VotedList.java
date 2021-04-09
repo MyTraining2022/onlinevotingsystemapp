@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -24,7 +26,7 @@ import javax.persistence.JoinColumn;
  */
 
 @Entity
-@Table(name = "Voter_list")
+@Table(name = "Voted_list")
 public class VotedList implements Serializable {
 	private static final long serialVersionUID = 856L;
 
@@ -35,18 +37,21 @@ public class VotedList implements Serializable {
 
 	@Basic
 	private LocalDate pollingDateTime;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Voter_list_Cooperative_Society", joinColumns = {
-			@JoinColumn(name = "Voter_id") }, inverseJoinColumns = { @JoinColumn(name = "society_id") })
-	private List<CooperativeSociety> society;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Voter_list_Registered_Society_Voters", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "reg_voter_id"))
+	
+	
+	@OneToOne
+	@JoinColumn(name = "society_id")
+	private CooperativeSociety society; // no list
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Voter_id")
 	private List<RegisteredSocietyVoters> voter;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Voter_list_Nominated_Candidates", joinColumns = @JoinColumn(name = "Voter_id"), inverseJoinColumns = @JoinColumn(name = "candidate_id"))
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Voter_id")
 	private List<NominatedCandidates> candidate;
 
+	//
 	@Basic
 	private LocalTime startTime;
 	@Basic
@@ -55,8 +60,8 @@ public class VotedList implements Serializable {
 	public VotedList() {
 		super();
 	}
-	
-	public VotedList(long id, LocalDate pollingDateTime, List<CooperativeSociety> society,
+
+	public VotedList(long id, LocalDate pollingDateTime, CooperativeSociety society,
 			List<RegisteredSocietyVoters> voter, List<NominatedCandidates> candidate, LocalTime startTime,
 			LocalTime endTime) {
 		super();
@@ -85,11 +90,11 @@ public class VotedList implements Serializable {
 		this.pollingDateTime = pollingDateTime;
 	}
 
-	public List<CooperativeSociety> getSociety() {
+	public CooperativeSociety getSociety() {
 		return society;
 	}
 
-	public void setSociety(List<CooperativeSociety> society) {
+	public void setSociety(CooperativeSociety society) {
 		this.society = society;
 	}
 
@@ -130,5 +135,7 @@ public class VotedList implements Serializable {
 		return "VotedList [id=" + id + ", pollingDateTime=" + pollingDateTime + ", society=" + society + ", voter="
 				+ voter + ", candidate=" + candidate + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
+	
+	
 
 }
