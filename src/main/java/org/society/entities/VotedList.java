@@ -57,6 +57,19 @@ public class VotedList implements Serializable {
 	public VotedList() {
 		super();
 	}
+	
+	public VotedList(long id, LocalDate pollingDateTime, List<CooperativeSociety> society,
+			List<RegisteredSocietyVoters> voter, List<NominatedCandidates> candidate, LocalTime startTime,
+			LocalTime endTime) {
+		super();
+		this.id = id;
+		this.pollingDateTime = pollingDateTime;
+		this.society = society;
+		this.voter = voter;
+		this.candidate = candidate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
 
 	public long getId() {
 		return id;
