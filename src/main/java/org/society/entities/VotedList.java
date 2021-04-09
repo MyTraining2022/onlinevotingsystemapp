@@ -32,7 +32,6 @@ public class VotedList implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Voter_id")
 	private long id;
 
 	@Basic
@@ -41,7 +40,7 @@ public class VotedList implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "society_id")
-	private CooperativeSociety society; // no list
+	private CooperativeSociety society;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Voter_list_id")
@@ -51,7 +50,6 @@ public class VotedList implements Serializable {
 	@JoinColumn(name = "Voter_list_id")
 	private List<NominatedCandidates> candidate;
 
-	//
 	@Basic
 	private LocalTime startTime;
 	@Basic

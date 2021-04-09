@@ -21,7 +21,6 @@ public class NominatedCandidates implements Serializable {
 	
 	private static final long serialVersionUID = 99L;
 	@Id
-	@Column(name = "candidate_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long candidateId;
 	private String nominationFormNo;

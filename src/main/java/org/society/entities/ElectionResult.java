@@ -27,7 +27,6 @@ public class ElectionResult implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "election_result_id")
 	private long id;
 	@Basic
 	private LocalDate pollingDate;

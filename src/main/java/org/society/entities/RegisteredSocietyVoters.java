@@ -30,7 +30,6 @@ public class RegisteredSocietyVoters implements Serializable
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name = "reg_voter_id")
 	private long id;
 	@NotBlank(message = "Voter Id number can not be null")
 	private String voterIdCardNo;
