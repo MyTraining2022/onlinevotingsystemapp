@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 @Component
-public class ElectionResultServiceImp implements ElectionResultDao{
+public class ElectionResultImp implements ElectionResultDao{
 	@Autowired
 	ElectionResultRepository repository;
 	@Override
@@ -21,25 +21,25 @@ public class ElectionResultServiceImp implements ElectionResultDao{
 			throw new DuplicateEntityFoundException("Duplicate Election Result found");
 		}
 		repository.save(result);
-		return 1;
+		return 0;
 	}
 
 	@Override
 	public List<ElectionResult> viewElectionResultList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ElectionResult> list =(List<ElectionResult>) repository.findAll();
+		return list;
 	}
 
 	@Override
 	public ElectionResult viewCandidatewiseResult(int candidateId) throws NominatedCandidateNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repository.findById(candidateId);
 	}
 
 	@Override
 	public double viewVotingPercentage() {
-		// TODO Auto-generated method stub
 		return 0;
+		
 	}
 
 	@Override
