@@ -6,7 +6,7 @@ import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 
 public interface ElectionResultService {
-	public boolean addElectionResult(ElectionResult result);
+	public void addElectionResult(ElectionResult result);
 	public boolean updateElectionResult(ElectionResult result);
 	public boolean deleteElectionResult(ElectionResult result);
 	public List<ElectionResult> viewElectionResultList();

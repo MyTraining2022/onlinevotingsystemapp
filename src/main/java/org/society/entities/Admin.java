@@ -7,13 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*
- * @author Shobhit Kumar Shaw 
- * 
- * Class Description: 
- * 
- */
-
 @Entity
 public class Admin implements Serializable {
 	

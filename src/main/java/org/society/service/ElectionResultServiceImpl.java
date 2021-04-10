@@ -7,15 +7,16 @@ import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
 public class ElectionResultServiceImpl implements ElectionResultService {
 	@Autowired
 	ElectionResultDaoImp dao;
-	
+
 	@Override
-	public boolean addElectionResult(ElectionResult result) {
+	public void addElectionResult(ElectionResult result) {
 		dao.save(result);
-		return true;
+
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class ElectionResultServiceImpl implements ElectionResultService {
 
 	@Override
 	public ElectionResult viewCandidatewiseResult(long candidateId) {
-		return  dao.getCandidatewiseResult(candidateId);
+		return dao.getCandidatewiseResult(candidateId);
 	}
 
 	@Override

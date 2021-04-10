@@ -17,7 +17,7 @@ public class ElectionResultDaoImp implements ElectionResultDao {
 	ElectionResultRepository repository;
 
 	@Override
-	public void save(ElectionResult result) throws DuplicateEntityFoundException {
+	public void save(ElectionResult result) {
 		if (repository.existsById(result.getId())) {
 			throw new DuplicateEntityFoundException("Duplicate Election Result found");
 		}
@@ -27,22 +27,22 @@ public class ElectionResultDaoImp implements ElectionResultDao {
 
 	@Override
 	public boolean update(ElectionResult result) throws ElectionResultNotFoundException {
-		String r = result.getResult();
-		if (r.isEmpty()) {
+		if (repository.existsById(result.getId())) {
+			repository.save(result);
+			return true;
+		} else {
 			throw new ElectionResultNotFoundException("No Election Result found");
 		}
-		repository.save(result);
-		return true;
 	}
 
 	@Override
 	public boolean delete(ElectionResult result) throws ElectionResultNotFoundException {
-		String r = result.getResult();
-		if (r.isEmpty()) {
-			throw new ElectionResultNotFoundException("No Election Result found to delete");
+		if (repository.existsById(result.getId())) {
+			repository.delete(result);
+			return true;
+		} else {
+			throw new ElectionResultNotFoundException("No Election Result found");
 		}
-		repository.delete(result);
-		return true;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class ElectionResultDaoImp implements ElectionResultDao {
 	public ElectionResult getCandidatewiseResult(long candidateId) throws NominatedCandidateNotFoundException {
 		Optional<ElectionResult> er = repository.findById(candidateId);
 		if (er.isPresent()) {
-			return er.get();   // how to get result
+			return er.get(); // how to get result
 		} else {
 			throw new NominatedCandidateNotFoundException(
 					"For this Id " + candidateId + " There is no Nominated Candidate ");
