@@ -6,9 +6,14 @@ import org.society.entities.CooperativeSociety;
 import org.society.exceptions.SocietyNotFoundException;
 
 public interface CooperativeSocietyDao {
-	public int addSocietyDetails(CooperativeSociety society);
-	public int updateSocietyDetails(CooperativeSociety society) throws SocietyNotFoundException;
-	public int deleteSociety(int societyId) throws SocietyNotFoundException;
-	public List<CooperativeSociety> viewSocietiesList();
-	public CooperativeSociety viewSocietyById(int societyId) throws SocietyNotFoundException;
+	
+	public void save(CooperativeSociety society);
+
+	public boolean update(CooperativeSociety society) throws SocietyNotFoundException;
+
+	public boolean delete(int societyId) throws SocietyNotFoundException;
+
+	public List<CooperativeSociety> getAll();
+
+	public CooperativeSociety getById(int societyId) throws SocietyNotFoundException;
 }
