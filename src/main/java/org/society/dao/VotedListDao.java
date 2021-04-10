@@ -9,9 +9,14 @@ import org.society.exceptions.VoterNotFoundException;
 
 public interface VotedListDao {
 	public int castVotedList(VotedList votedList);
-	public int updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException;
-	public int deletedVotedListDetails(int id) throws CastedVoteNotFoundException;
+
+	public boolean updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException;
+
+	public boolean deletedVotedListDetails(int id) throws CastedVoteNotFoundException;
+
 	public List<VotedList> viewVotedList();
+
 	public VotedList searchByVoterId(int voterId) throws VoterNotFoundException;
+
 	public List<VotedList> searchByNominatedCandidateId(int candidateId) throws NominatedCandidateNotFoundException;
 }

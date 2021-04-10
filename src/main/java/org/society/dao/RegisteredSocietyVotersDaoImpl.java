@@ -7,42 +7,48 @@ package org.society.dao;
 import java.util.List;
 
 import org.society.entities.RegisteredSocietyVoters;
+import org.society.exceptions.DuplicateEntityFoundException;
 import org.society.exceptions.VoterNotFoundException;
 import org.society.repository.RegisteredSocietyVotersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDao{
+public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDao {
 
 	@Autowired
 	RegisteredSocietyVotersRepository registeredSocietyVotersRepository;
-	
+
 	@Override
-	public int voterRegistration(RegisteredSocietyVoters voter) {
-		if(voter != null) {
+	public void voterRegistration(RegisteredSocietyVoters voter) {
+		if (registeredSocietyVotersRepository.existsById(voter.getId())) {
+			throw new DuplicateEntityFoundException("Duplicate Voter can not be saved");
+		}
+		if (voter != null) {
 			registeredSocietyVotersRepository.save(voter);
 		}
-		return 0;
 	}
 
 	@Override
-	public int updateRegisteredVoterDetails(RegisteredSocietyVoters voter) throws VoterNotFoundException {
-		if(registeredSocietyVotersRepository.existsById(voter.getId())) {
+	public boolean updateRegisteredVoterDetails(RegisteredSocietyVoters voter) throws VoterNotFoundException {
+		if (registeredSocietyVotersRepository.existsById(voter.getId())) {
 			registeredSocietyVotersRepository.save(voter);
+			return true;
 		}
-		return 0;
+		return false;
 	}
 
 	@Override
-	public int deleteRegisteredVoter(int voterId) throws VoterNotFoundException {
-		if(registeredSocietyVotersRepository.existsById((long) voterId)) {
+	public boolean deleteRegisteredVoter(int voterId) throws VoterNotFoundException {
+		if (registeredSocietyVotersRepository.existsById((long) voterId)) {
 			registeredSocietyVotersRepository.deleteById((long) voterId);
+			return true;
 		}
-		return 0;
+		return false;
 	}
 
 	@Override
 	public List<RegisteredSocietyVoters> viewRegisteredVoterList() {
-		List<RegisteredSocietyVoters> list = (List<RegisteredSocietyVoters>) registeredSocietyVotersRepository.findAll();
+		List<RegisteredSocietyVoters> list = (List<RegisteredSocietyVoters>) registeredSocietyVotersRepository
+				.findAll();
 		return list;
 	}
 

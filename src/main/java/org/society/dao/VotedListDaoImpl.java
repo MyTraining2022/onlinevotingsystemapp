@@ -22,19 +22,21 @@ public class VotedListDaoImpl implements VotedListDao{
 	}
 
 	@Override
-	public int updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException {
+	public boolean updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException {
 		if(votedListRepository.existsById(votedList.getId())) {
 			votedListRepository.save(votedList);
+			return true;
 		}
-		return 0;
+		return false;
 	}
 
 	@Override
-	public int deletedVotedListDetails(int id) throws CastedVoteNotFoundException {
+	public boolean deletedVotedListDetails(int id) throws CastedVoteNotFoundException {
 		if(votedListRepository.existsById((long) id)) {
 			votedListRepository.deleteById((long) id);
+			return true;
 		}
-		return 0;
+		return false;
 	}
 
 	@Override
