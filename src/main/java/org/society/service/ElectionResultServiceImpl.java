@@ -7,13 +7,11 @@ import org.society.entities.NominatedCandidates;
 
 public class ElectionResultServiceImpl implements ElectionResultService{
 
-	@Override
-	public int addElectionResult(ElectionResult result) {
-		
-		return -1;
-		
+	/*@Override
+	public void addElectionResult(ElectionResult result) {
+			
 	}
-
+*/
 	@Override
 	public List<ElectionResult> viewElectionResultList() {
 		// TODO Auto-generated method stub
