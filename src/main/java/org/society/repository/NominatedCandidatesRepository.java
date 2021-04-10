@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NominatedCandidatesRepository extends JpaRepository<NominatedCandidates, Long> {
-
+	NominatedCandidates findByCandidateId (long candidateId);
 }
