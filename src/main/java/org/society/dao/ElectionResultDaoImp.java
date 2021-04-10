@@ -55,7 +55,7 @@ public class ElectionResultDaoImp implements ElectionResultDao {
 	public ElectionResult getCandidatewiseResult(long candidateId) throws NominatedCandidateNotFoundException {
 		Optional<ElectionResult> er = repository.findById(candidateId);
 		if (er.isPresent()) {
-			return er.get();
+			return er.get();   // how to get result
 		} else {
 			throw new NominatedCandidateNotFoundException(
 					"For this Id " + candidateId + " There is no Nominated Candidate ");

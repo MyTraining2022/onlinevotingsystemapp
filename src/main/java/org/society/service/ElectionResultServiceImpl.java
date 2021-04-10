@@ -6,7 +6,8 @@ import org.society.dao.ElectionResultDaoImp;
 import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class ElectionResultServiceImpl implements ElectionResultService {
 	@Autowired
 	ElectionResultDaoImp dao;
