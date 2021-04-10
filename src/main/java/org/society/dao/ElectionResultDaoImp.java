@@ -52,7 +52,7 @@ public class ElectionResultDaoImp implements ElectionResultDao {
 	}
 
 	@Override
-	public ElectionResult viewCandidatewiseResult(long candidateId) throws NominatedCandidateNotFoundException {
+	public ElectionResult getCandidatewiseResult(long candidateId) throws NominatedCandidateNotFoundException {
 		Optional<ElectionResult> er = repository.findById(candidateId);
 		if (er.isPresent()) {
 			return er.get();

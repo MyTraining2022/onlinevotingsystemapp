@@ -2,26 +2,42 @@ package org.society.service;
 
 import java.util.List;
 
+import org.society.dao.ElectionResultDaoImp;
 import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class ElectionResultServiceImpl implements ElectionResultService{
-
-	/*@Override
-	public void addElectionResult(ElectionResult result) {
-			
+public class ElectionResultServiceImpl implements ElectionResultService {
+	@Autowired
+	ElectionResultDaoImp dao;
+	
+	@Override
+	public boolean addElectionResult(ElectionResult result) {
+		dao.save(result);
+		return true;
 	}
-*/
+
+	@Override
+	public boolean updateElectionResult(ElectionResult result) {
+		dao.update(result);
+		return true;
+	}
+
+	@Override
+	public boolean deleteElectionResult(ElectionResult result) {
+		dao.delete(result);
+		return true;
+
+	}
+
 	@Override
 	public List<ElectionResult> viewElectionResultList() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getElectionResultList();
 	}
 
 	@Override
-	public ElectionResult viewCandidatewiseResult(int candidateId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ElectionResult viewCandidatewiseResult(long candidateId) {
+		return  dao.getCandidatewiseResult(candidateId);
 	}
 
 	@Override
@@ -31,7 +47,7 @@ public class ElectionResultServiceImpl implements ElectionResultService{
 	}
 
 	@Override
-	public double viewCandidateVotingPercent(int candidateId) {
+	public double viewCandidateVotingPercent(long candidateId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -39,7 +55,7 @@ public class ElectionResultServiceImpl implements ElectionResultService{
 	@Override
 	public void displayVotingStatistics() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -69,7 +85,7 @@ public class ElectionResultServiceImpl implements ElectionResultService{
 	@Override
 	public void displayPollingResult() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

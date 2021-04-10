@@ -6,11 +6,13 @@ import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 
 public interface ElectionResultService {
-	//public void addElectionResult(ElectionResult result);
+	public boolean addElectionResult(ElectionResult result);
+	public boolean updateElectionResult(ElectionResult result);
+	public boolean deleteElectionResult(ElectionResult result);
 	public List<ElectionResult> viewElectionResultList();
-	public ElectionResult viewCandidatewiseResult(int candidateId);
+	public ElectionResult viewCandidatewiseResult(long candidateId);
 	public double viewVotingPercentage();
-	public double viewCandidateVotingPercent(int candidateId);
+	public double viewCandidateVotingPercent(long candidateId);
 	public void displayVotingStatistics();
 	public NominatedCandidates viewHighestVotingPercentCandidate();
 	public NominatedCandidates viewLowestVotingPercentCandidate();
