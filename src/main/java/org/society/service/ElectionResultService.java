@@ -6,7 +6,7 @@ import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 
 public interface ElectionResultService {
-	public int addElectionResult(ElectionResult result);
+	//public void addElectionResult(ElectionResult result);
 	public List<ElectionResult> viewElectionResultList();
 	public ElectionResult viewCandidatewiseResult(int candidateId);
 	public double viewVotingPercentage();
