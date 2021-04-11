@@ -40,7 +40,7 @@ public class NominatedCandidates implements Serializable {
 	@Min(value = 0, message = "Security Deposit should not be less than 0")
 	private float securityDeposit;
 
-	// It must be true than only a candidate can complete his registration process
+	// It must be true only than a candidate can complete his or her can registration process
 	@AssertTrue
 	private boolean oathOrAffirmationSummited;
 

@@ -1,6 +1,7 @@
 package org.society.test.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 
@@ -28,6 +29,9 @@ public class ElectionOfficerTest {
 		ElectionOfficer ef = new ElectionOfficer(788L, "shobhit", "shaw", "lsfj", "male", "5555", "jsfj", "lsjf", "jsflj", "null", 0);
 		when(repo.save(ef)).thenReturn(ef);
 		assertEquals(ef, eoservice.save(ef));
+		
+		ef = new ElectionOfficer(788L, null, "shaw", "lsfj", "male", "5555", "jsfj", "lsjf", "jsflj", "null", 0);
+		when(repo.save(ef)).thenReturn(ef);
 		
 		
 		

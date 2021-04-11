@@ -6,9 +6,14 @@ import org.society.entities.User;
 import org.society.exceptions.UserNotFoundException;
 
 public interface UserDao {
-	public int registerUser(User user);
-	public int updateUser(User user) throws UserNotFoundException;
-	public int deleteUser(long userId) throws UserNotFoundException;
+	
+	public User save(User user);
+
+	public User update(User user) throws UserNotFoundException;
+
+	public Boolean delete(long userId) throws UserNotFoundException;
+
 	public List<User> viewUserList();
+
 	public User findByUserId(long userId) throws UserNotFoundException;
 }

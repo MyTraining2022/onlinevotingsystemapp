@@ -47,9 +47,9 @@ public class ElectionOfficerDaoImpl implements ElectionOfficerDao {
 
 	@Override
 	public ElectionOfficer getElectionOfficerById(long officerId) {
-		Optional<ElectionOfficer> emp = repository.findById(officerId);
-		if (emp.isPresent()) {
-			return emp.get();
+		Optional<ElectionOfficer> officer = repository.findById(officerId);
+		if (officer.isPresent()) {
+			return officer.get();
 		} else
 			throw new ElectionOfficerNotFoundException("Election Officer not found!");
 
