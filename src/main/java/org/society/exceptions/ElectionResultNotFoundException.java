@@ -4,7 +4,15 @@ public class ElectionResultNotFoundException extends RuntimeException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public ElectionResultNotFoundException(String msg) {
-		super(msg);
+	private String operation;
+
+	public ElectionResultNotFoundException(String operation,String message) {
+		super(message);
+		this.operation = operation;
+		
+	}
+	
+	public String getMessage() {
+		return operation;
 	}
 }

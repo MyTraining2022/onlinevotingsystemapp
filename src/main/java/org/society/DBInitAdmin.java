@@ -7,13 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DBInitAdmin implements CommandLineRunner{
+public class DBInitAdmin implements CommandLineRunner {
 	@Autowired
 	AdminRepository repository;
+
 	@Override
 	public void run(String... args) throws Exception {
-		repository.save(new Admin(123L,"Life", "Dead"));
-		
+		Admin ad1 = new Admin(123L, "Life", "Dead");
+		repository.save(ad1);
 	}
 
 }
