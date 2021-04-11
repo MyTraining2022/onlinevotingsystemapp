@@ -6,15 +6,15 @@ import org.society.entities.RegisteredSocietyVoters;
 import org.society.exceptions.VoterNotFoundException;
 
 public interface RegisteredSocietyVotersDao {
-	public void voterRegistration(RegisteredSocietyVoters voter);
+	public void save(RegisteredSocietyVoters voter);
 
-	public boolean updateRegisteredVoterDetails(RegisteredSocietyVoters voter) throws VoterNotFoundException;
+	public boolean update(RegisteredSocietyVoters voter) throws VoterNotFoundException;
 
-	public boolean deleteRegisteredVoter(int voterId) throws VoterNotFoundException;
+	public boolean delete(long voterId) throws VoterNotFoundException;
 
 	public List<RegisteredSocietyVoters> viewRegisteredVoterList();
 
-	public RegisteredSocietyVoters searchByVoterID(int voterId) throws VoterNotFoundException;
+	public RegisteredSocietyVoters searchByVoterID(long voterId) throws VoterNotFoundException;
 
-	public RegisteredSocietyVoters loginValidate(String userid, String password) throws VoterNotFoundException;
+	//public RegisteredSocietyVoters loginValidate(String userid, String password) throws VoterNotFoundException;
 }

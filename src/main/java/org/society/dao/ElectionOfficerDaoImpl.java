@@ -34,13 +34,13 @@ public class ElectionOfficerDaoImpl implements ElectionOfficerDao {
 	}
 
 	@Override
-	public boolean delete(int officerId) throws ElectionOfficerNotFoundException {
+	public boolean delete(long officerId) throws ElectionOfficerNotFoundException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public ElectionOfficer getElectionOfficerById(int officerId) throws ElectionOfficerNotFoundException {
+	public ElectionOfficer getElectionOfficerById(long officerId) throws ElectionOfficerNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}

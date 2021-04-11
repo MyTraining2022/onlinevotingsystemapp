@@ -17,12 +17,12 @@ public class VotedListDaoImpl implements VotedListDao{
 	VotedListRepository votedListRepository;
 	
 	@Override
-	public int castVotedList(VotedList votedList) {
+	public int cast(VotedList votedList) {
 		return 0;
 	}
 
 	@Override
-	public boolean updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException {
+	public boolean update(VotedList votedList) throws CastedVoteNotFoundException {
 		if(votedListRepository.existsById(votedList.getId())) {
 			votedListRepository.save(votedList);
 			return true;
@@ -31,7 +31,7 @@ public class VotedListDaoImpl implements VotedListDao{
 	}
 
 	@Override
-	public boolean deletedVotedListDetails(long id) throws CastedVoteNotFoundException {
+	public boolean delete(long id) throws CastedVoteNotFoundException {
 		if(votedListRepository.existsById(id)){
 			votedListRepository.deleteById(id);
 			return true;
