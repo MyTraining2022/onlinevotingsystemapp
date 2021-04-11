@@ -15,6 +15,6 @@ public class DBinitElectionOfficer implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 	
-		repo.save(new ElectionOfficer(788L, "sho", "sh", "lsfj", "male", "5555", "jsfj", "lsjf", "jsflj", "null", 0));
+		repo.save(new ElectionOfficer(788L, "sho", "sh", "lsfj", "male", "5555", "jsfj", "lsjf", "jsflj", "null", 7444));
 	}
 }
