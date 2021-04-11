@@ -31,7 +31,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 			repository.save(result);
 			return true;
 		} else {
-			throw new ElectionResultNotFoundException("No Election Result found");
+			throw new ElectionResultNotFoundException("update","No Election Result found");
 		}
 	}
 
@@ -41,7 +41,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 			repository.delete(result);
 			return true;
 		} else {
-			throw new ElectionResultNotFoundException("No Election Result found");
+			throw new ElectionResultNotFoundException("delete","No Election Result found");
 		}
 	}
 

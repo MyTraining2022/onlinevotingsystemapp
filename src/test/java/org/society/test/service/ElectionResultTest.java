@@ -29,4 +29,13 @@ public class ElectionResultTest {
 		assertEquals(er, erservice.save(er));
 
 	}
+	
+	@Test
+	public void updateElectionResultDetailsTest() {
+		
+		ElectionResult er = new ElectionResult(121l, LocalDate.of(2021, 01, 26), null, "Saran",1000, 500, 50f, 300, 30f, "win");
+		//when(repo.update(er)).thenReturn(er);
+		assertEquals(er, erservice.save(er));
+
+	}
 }

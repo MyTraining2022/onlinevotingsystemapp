@@ -14,29 +14,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-//@EnableSwagger2
-//@ComponentScan(basePackages = {"com"})
+
 public class OnlinevotingsystemappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlinevotingsystemappApplication.class, args);
 
 	}
-		/*@Bean
-		public Docket productApi() {
-			return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-					// .apis(RequestHandlerSelectors.basePackage("com.jpa"))
-					.paths(PathSelectors.any()).build().apiInfo(metaInfo());
-
-		}
-
-		private ApiInfo metaInfo() {
-
-			ApiInfo apiInfo = new ApiInfo("Sping Boot Test", "CapGemini training example", "1.0", "", "shobhit kumar shaw ",
-					"Licence 2.1.0", "https://www.cg.com");
-
-			return apiInfo;
-		}
 		
-*/
 }
