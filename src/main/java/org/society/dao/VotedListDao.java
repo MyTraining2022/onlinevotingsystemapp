@@ -1,3 +1,7 @@
+/*
+ * @author: Aditya Mohapatra
+ */
+
 package org.society.dao;
 
 import java.util.List;
@@ -14,9 +18,9 @@ public interface VotedListDao {
 
 	public boolean delete(long id) throws CastedVoteNotFoundException;
 
-	public List<VotedList> viewVotedList();
+	public List<VotedList> getVotedList();
 
-	public VotedList searchByVoterId(String voterId) throws VoterNotFoundException;
+	public VotedList getByVoterId(long voterId) throws VoterNotFoundException;
 
-	public List<VotedList> searchByNominatedCandidateId(long candidateId) throws NominatedCandidateNotFoundException;
+	//public List<VotedList> searchByNominatedCandidateId(long candidateId) throws NominatedCandidateNotFoundException;
 }

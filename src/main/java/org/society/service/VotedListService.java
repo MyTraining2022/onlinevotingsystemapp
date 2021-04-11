@@ -1,3 +1,7 @@
+/*
+ * @author: Aditya Mohapatra
+ */
+
 package org.society.service;
 
 import java.util.List;
@@ -8,13 +12,13 @@ public interface VotedListService {
 	
 	public int castVotedList(VotedList votedList);
 
-	public int updateVotedListDetails(VotedList votedList);
+	public boolean updateVotedListDetails(VotedList votedList);
 
-	public int deletedVotedListDetails(int id);
+	public boolean deletedVotedListDetails(long id);
 
 	public List<VotedList> viewVotedList();
 
-	public VotedList searchByVoterId(int voterId);
+	public VotedList searchByVoterId(long voterId);
 
 	public List<VotedList> searchByNominatedCandidateId(int candidateId);
 }

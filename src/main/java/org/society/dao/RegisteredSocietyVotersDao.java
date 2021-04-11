@@ -12,9 +12,9 @@ public interface RegisteredSocietyVotersDao {
 
 	public boolean delete(long voterId) throws VoterNotFoundException;
 
-	public List<RegisteredSocietyVoters> viewRegisteredVoterList();
+	public List<RegisteredSocietyVoters> getRegisteredVoterList();
 
-	public RegisteredSocietyVoters searchByVoterID(long voterId) throws VoterNotFoundException;
+	public RegisteredSocietyVoters getByVoterID(long voterId) throws VoterNotFoundException;
 
 	//public RegisteredSocietyVoters loginValidate(String userid, String password) throws VoterNotFoundException;
 }

@@ -20,7 +20,7 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 	@Override
 	public void save(RegisteredSocietyVoters voter) {
 		if (registeredSocietyVotersRepository.existsById(voter.getId())) {
-			throw new DuplicateEntityFoundException("Save operation","Duplicate Voter can not be saved");
+			throw new DuplicateEntityFoundException("Duplicate Voter can not be saved");
 		}
 		if (voter != null) {
 			registeredSocietyVotersRepository.save(voter);
@@ -38,6 +38,9 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 
 	@Override
 	public boolean delete(long voterId) throws VoterNotFoundException {
+		if (registeredSocietyVotersRepository.existsById(voterId)) {
+			registeredSocietyVotersRepository.deleteById(voterId);
+		}
 		if (registeredSocietyVotersRepository.existsById( voterId)) {
 			registeredSocietyVotersRepository.deleteById( voterId);
 			return true;
@@ -46,20 +49,19 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 	}
 
 	@Override
-	public List<RegisteredSocietyVoters> viewRegisteredVoterList() {
+	public List<RegisteredSocietyVoters> getRegisteredVoterList() {
 		List<RegisteredSocietyVoters> list = (List<RegisteredSocietyVoters>) registeredSocietyVotersRepository
 				.findAll();
 		return list;
 	}
 
 	@Override
-	public RegisteredSocietyVoters searchByVoterID(long voterId) throws VoterNotFoundException {
+	public RegisteredSocietyVoters getByVoterID(long voterId) throws VoterNotFoundException {
 		return registeredSocietyVotersRepository.findById(voterId);
 	}
-/*
-	@Override
-	public RegisteredSocietyVoters loginValidate(String userid, String password) throws VoterNotFoundException {
-		return null;
-	}
-*/
+	
+	/*
+	 * @Override public RegisteredSocietyVoters loginValidate(String userid, String
+	 * password) throws VoterNotFoundException { return null; }
+	 */
 }
