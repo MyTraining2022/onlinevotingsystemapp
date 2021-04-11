@@ -8,6 +8,7 @@ package org.society.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class NominatedCandidates implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long candidateId;
 	//add unique constraint here
-	private String nominationFormNo;
+	private long nominationFormNo;
 	
 	private String partyName;
 	private String symbol;
@@ -36,16 +37,10 @@ public class NominatedCandidates implements Serializable {
     private boolean policeVerificationDone;
     private boolean approvedByElectionOfficer;
     
-    @OneToOne(mappedBy = "nominatedCandidates") 
+   @OneToOne(cascade = CascadeType.ALL) 
+   @JoinColumn(name = "registered_society_voter_fk")
     private RegisteredSocietyVoters registeredSocietyVoter;
     
-    @OneToOne(mappedBy = "nominatedCandidates")
-    private VotedList votedList;
-    
-    //@ManyToOne
-   // @JoinColumn(name = "election_result_fk")
-    @OneToOne(mappedBy = "nominatedCandidates")
-    private ElectionResult electionResult;
 	
     public NominatedCandidates() {
 		super();
@@ -53,10 +48,9 @@ public class NominatedCandidates implements Serializable {
     
     
 
-	public NominatedCandidates(long candidateId, String nominationFormNo, String partyName, String symbol,
+	public NominatedCandidates(long candidateId, long nominationFormNo, String partyName, String symbol,
 			float securityDeposit, boolean oathOrAffirmationSummited, boolean policeVerificationDone,
-			boolean approvedByElectionOfficer, RegisteredSocietyVoters registeredSocietyVoter, VotedList votedList,
-			ElectionResult electionResult) {
+			boolean approvedByElectionOfficer, RegisteredSocietyVoters registeredSocietyVoter) {
 		super();
 		this.candidateId = candidateId;
 		this.nominationFormNo = nominationFormNo;
@@ -67,20 +61,6 @@ public class NominatedCandidates implements Serializable {
 		this.policeVerificationDone = policeVerificationDone;
 		this.approvedByElectionOfficer = approvedByElectionOfficer;
 		this.registeredSocietyVoter = registeredSocietyVoter;
-		this.votedList = votedList;
-		this.electionResult = electionResult;
-	}
-
-
-
-	public VotedList getVotedList() {
-		return votedList;
-	}
-
-
-
-	public void setVotedList(VotedList votedList) {
-		this.votedList = votedList;
 	}
 
 
@@ -89,83 +69,90 @@ public class NominatedCandidates implements Serializable {
 		return candidateId;
 	}
 
+
 	public void setCandidateId(long candidateId) {
 		this.candidateId = candidateId;
 	}
 
-	public String getNominationFormNo() {
+
+	public long getNominationFormNo() {
 		return nominationFormNo;
 	}
 
-	public void setNominationFormNo(String nominationFormNo) {
+
+	public void setNominationFormNo(long nominationFormNo) {
 		this.nominationFormNo = nominationFormNo;
 	}
+
 
 	public String getPartyName() {
 		return partyName;
 	}
 
+
 	public void setPartyName(String partyName) {
 		this.partyName = partyName;
 	}
+
 
 	public String getSymbol() {
 		return symbol;
 	}
 
+
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
+
 
 	public float getSecurityDeposit() {
 		return securityDeposit;
 	}
 
+
 	public void setSecurityDeposit(float securityDeposit) {
 		this.securityDeposit = securityDeposit;
 	}
+
 
 	public boolean isOathOrAffirmationSummited() {
 		return oathOrAffirmationSummited;
 	}
 
+
 	public void setOathOrAffirmationSummited(boolean oathOrAffirmationSummited) {
 		this.oathOrAffirmationSummited = oathOrAffirmationSummited;
 	}
+
 
 	public boolean isPoliceVerificationDone() {
 		return policeVerificationDone;
 	}
 
+
 	public void setPoliceVerificationDone(boolean policeVerificationDone) {
 		this.policeVerificationDone = policeVerificationDone;
 	}
+
 
 	public boolean isApprovedByElectionOfficer() {
 		return approvedByElectionOfficer;
 	}
 
+
 	public void setApprovedByElectionOfficer(boolean approvedByElectionOfficer) {
 		this.approvedByElectionOfficer = approvedByElectionOfficer;
 	}
+
 
 	public RegisteredSocietyVoters getRegisteredSocietyVoter() {
 		return registeredSocietyVoter;
 	}
 
+
 	public void setRegisteredSocietyVoter(RegisteredSocietyVoters registeredSocietyVoter) {
 		this.registeredSocietyVoter = registeredSocietyVoter;
 	}
-
-	
-	public ElectionResult getElectionResult() {
-		return electionResult;
-	}
-
-	public void setElectionResult(ElectionResult electionResult) {
-		this.electionResult = electionResult;
-	}
-
 
 
 	@Override
@@ -174,15 +161,7 @@ public class NominatedCandidates implements Serializable {
 				+ ", partyName=" + partyName + ", symbol=" + symbol + ", securityDeposit=" + securityDeposit
 				+ ", oathOrAffirmationSummited=" + oathOrAffirmationSummited + ", policeVerificationDone="
 				+ policeVerificationDone + ", approvedByElectionOfficer=" + approvedByElectionOfficer
-				+ ", registeredSocietyVoter=" + registeredSocietyVoter + ", votedList=" + votedList
-				+ ", electionResult=" + electionResult + "]";
+				+ ", registeredSocietyVoter=" + registeredSocietyVoter + "]";
 	}
-
-	
-	
-	
-    
-    
-    
-  
 }
+	

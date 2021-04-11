@@ -30,14 +30,14 @@ public class CooperativeSociety implements Serializable{
 	private String district;
 	private String pincode;
 	
-	@OneToOne(mappedBy = "cooperativeSociety")
-	RegisteredSocietyVoters registeredSocietyVoters;
-	
-	@OneToOne(mappedBy = "cooperativeSociety")
-	VotedList votedList;
+
+	public CooperativeSociety() {
+		super();
+		
+	}
 
 	public CooperativeSociety(Long id, String societyName, String headOfSociety, String village, String mandal,
-			String district, String pincode, RegisteredSocietyVoters registeredSocietyVoters, VotedList votedList) {
+			String district, String pincode) {
 		super();
 		this.id = id;
 		this.societyName = societyName;
@@ -46,8 +46,6 @@ public class CooperativeSociety implements Serializable{
 		this.mandal = mandal;
 		this.district = district;
 		this.pincode = pincode;
-		this.registeredSocietyVoters = registeredSocietyVoters;
-		this.votedList = votedList;
 	}
 
 	public Long getId() {
@@ -106,30 +104,13 @@ public class CooperativeSociety implements Serializable{
 		this.pincode = pincode;
 	}
 
-	public RegisteredSocietyVoters getRegisteredSocietyVoters() {
-		return registeredSocietyVoters;
-	}
-
-	public void setRegisteredSocietyVoters(RegisteredSocietyVoters registeredSocietyVoters) {
-		this.registeredSocietyVoters = registeredSocietyVoters;
-	}
-
-	public VotedList getVotedList() {
-		return votedList;
-	}
-
-	public void setVotedList(VotedList votedList) {
-		this.votedList = votedList;
-	}
-
 	@Override
 	public String toString() {
 		return "CooperativeSociety [id=" + id + ", societyName=" + societyName + ", headOfSociety=" + headOfSociety
 				+ ", village=" + village + ", mandal=" + mandal + ", district=" + district + ", pincode=" + pincode
-				+ ", registeredSocietyVoters=" + registeredSocietyVoters + ", votedList=" + votedList + "]";
+				+ "]";
 	}
-	
-	
+
 	
 	
 }

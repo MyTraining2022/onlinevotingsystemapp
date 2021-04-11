@@ -33,8 +33,6 @@ public class ElectionResult implements Serializable {
 	@Basic
 	private LocalDate pollingDate;
 	
-	//@OneToMany(mappedBy= "electionResult",cascade = CascadeType.ALL)
-	//private List<NominatedCandidates> nominatedCandidates = new ArrayList<NominatedCandidates>();
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nominated_candidates_fk")
 	private NominatedCandidates nominatedCandidates;

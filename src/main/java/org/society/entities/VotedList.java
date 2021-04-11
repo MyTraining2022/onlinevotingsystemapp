@@ -42,14 +42,12 @@ public class VotedList implements Serializable {
 	@JoinColumn(name = "cooperative_society_fk")
 	private CooperativeSociety cooperativeSociety;
 	
-	//@OneToMany(mappedBy = "votedList", cascade = CascadeType.ALL)
-	//private List<RegisteredSocietyVoters> registeredSocietyVoters;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "registered_society_voters_fk")
 	private RegisteredSocietyVoters registeredSocietyVoters;
 	
-	//@OneToMany(mappedBy = "votedList2", cascade = CascadeType.ALL)
-	//private List<NominatedCandidates> nominatedCandidates;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nominated_candidates_fk")
 	private NominatedCandidates nominatedCandidates;
@@ -62,6 +60,21 @@ public class VotedList implements Serializable {
 	public VotedList() {
 		super();
 	}
+	
+	
+	public VotedList(long id, LocalDate pollingDateTime, CooperativeSociety cooperativeSociety,
+			RegisteredSocietyVoters registeredSocietyVoters, NominatedCandidates nominatedCandidates,
+			LocalTime startTime, LocalTime endTime) {
+		super();
+		this.id = id;
+		this.pollingDateTime = pollingDateTime;
+		this.cooperativeSociety = cooperativeSociety;
+		this.registeredSocietyVoters = registeredSocietyVoters;
+		this.nominatedCandidates = nominatedCandidates;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+
 
 	public long getId() {
 		return id;
