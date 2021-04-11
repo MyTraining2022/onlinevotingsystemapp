@@ -3,7 +3,6 @@ package org.society.service;
 import java.util.List;
 
 import org.society.dao.ElectionOfficerDao;
-import org.society.dao.ElectionOfficerDaoImpl;
 import org.society.entities.ElectionOfficer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,36 +11,38 @@ public class ElectionOfficerServiceImpl implements ElectionOfficerService {
 
 	@Autowired
 	private ElectionOfficerDao dao;
-	
-	
+
 	@Override
-	public boolean addElectionOfficerDetails(ElectionOfficer officer) {
-		dao.save(officer);
-		return true;
+	public ElectionOfficer addElectionOfficerDetails(ElectionOfficer officer) {
+		
+		return dao.save(officer);
 	}
 
 	@Override
-	public int updateElectionOfficerDetails(ElectionOfficer officer) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ElectionOfficer updateElectionOfficerDetails(ElectionOfficer officer) {
+		
+		return dao.update(officer);
 	}
 
 	@Override
-	public int deleteElectionOfficer(int officerId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean deleteElectionOfficer(int officerId) {
+		
+		return dao.delete(officerId);
 	}
 
 	@Override
 	public ElectionOfficer viewElectionOfficerById(int officerId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getElectionOfficerById(officerId);
 	}
 
 	@Override
 	public List<ElectionOfficer> viewElectionOfficerList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getElectionOfficerList();
 	}
+	
+	
+	
 
 }

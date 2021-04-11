@@ -26,7 +26,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	}
 
 	@Override
-	public boolean update(ElectionResult result) throws ElectionResultNotFoundException {
+	public boolean update(ElectionResult result) {
 		if (repository.existsById(result.getId())) {
 			repository.save(result);
 			return true;
@@ -36,7 +36,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	}
 
 	@Override
-	public boolean delete(ElectionResult result) throws ElectionResultNotFoundException {
+	public boolean delete(ElectionResult result) {
 		if (repository.existsById(result.getId())) {
 			repository.delete(result);
 			return true;
@@ -52,7 +52,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	}
 
 	@Override
-	public ElectionResult getCandidatewiseResult(long candidateId) throws NominatedCandidateNotFoundException {
+	public ElectionResult getCandidatewiseResult(long candidateId) {
 		Optional<ElectionResult> er = repository.findById(candidateId);
 		if (er.isPresent()) {
 			return er.get(); // how to get result

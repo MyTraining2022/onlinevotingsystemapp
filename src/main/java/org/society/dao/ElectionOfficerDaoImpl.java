@@ -1,6 +1,7 @@
 package org.society.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.society.entities.ElectionOfficer;
 import org.society.exceptions.DuplicateEntityFoundException;
@@ -9,47 +10,56 @@ import org.society.repository.ElectionOfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class ElectionOfficerDaoImpl implements ElectionOfficerDao {
-	
+
 	@Autowired
 	ElectionOfficerRepository repository;
 
 	@Override
-	public ElectionOfficer  save(ElectionOfficer officer) {
-		if(repository.existsById(officer.getId())) {
-			throw new DuplicateEntityFoundException("Save operation","Duplicate Election Officer can not be saved");
+	public ElectionOfficer save(ElectionOfficer officer) {
+		if (repository.existsById(officer.getId())) {
+			throw new DuplicateEntityFoundException("Save operation", "Duplicate Election Officer can not be saved");
 		}
-			return repository.save(officer);
-		
-		
+		return repository.save(officer);
+
 	}
 
 	@Override
-	public boolean update(ElectionOfficer officer) throws ElectionOfficerNotFoundException {
-		// TODO Auto-generated method stub
-		return false;
+	public ElectionOfficer update(ElectionOfficer officer) {
+		if (!repository.existsById(officer.getId()))
+			throw new ElectionOfficerNotFoundException("Election Officer not found!");
+
+		return repository.save(officer);
 	}
 
 	@Override
-	public boolean delete(long officerId) throws ElectionOfficerNotFoundException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(long officerId) {
+
+		if (repository.existsById(officerId)) {
+			repository.deleteById(officerId);
+			return true;
+		} else {
+			throw new ElectionOfficerNotFoundException("Election Officer not found!");
+		}
+
 	}
 
 	@Override
-	public ElectionOfficer getElectionOfficerById(long officerId) throws ElectionOfficerNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public ElectionOfficer getElectionOfficerById(long officerId) {
+		Optional<ElectionOfficer> emp = repository.findById(officerId);
+		if (emp.isPresent()) {
+			return emp.get();
+		} else
+			throw new ElectionOfficerNotFoundException("Election Officer not found!");
+
 	}
 
 	@Override
 	public List<ElectionOfficer> getElectionOfficerList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<ElectionOfficer> list = (List<ElectionOfficer>) repository.findAll();
 
-	
+		return list;
+	}
 
 }

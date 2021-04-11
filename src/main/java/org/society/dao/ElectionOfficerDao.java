@@ -9,7 +9,7 @@ public interface ElectionOfficerDao {
 	
 	public ElectionOfficer save(ElectionOfficer officer);
 
-	public boolean update(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
+	public ElectionOfficer update(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
 
 	public boolean delete(long officerId) throws ElectionOfficerNotFoundException;
 
