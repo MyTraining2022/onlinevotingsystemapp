@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.society.entities.RegisteredSocietyVoters;
 
-public interface RegisteredSocietyVotersDao {
+public interface RegisteredSocietyVotersService {
 	public int voterRegistration(RegisteredSocietyVoters voter);
 	public int updateRegisteredVoterDetails(RegisteredSocietyVoters voter);
 	public int deleteRegisteredVoter(int voterId);
