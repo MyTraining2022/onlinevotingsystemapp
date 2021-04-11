@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.society.entities.ElectionResult;
 import org.society.exceptions.DuplicateEntityFoundException;
+import org.society.exceptions.ElectionOfficerNotFoundException;
 import org.society.exceptions.ElectionResultNotFoundException;
 import org.society.exceptions.NominatedCandidateNotFoundException;
 import org.society.repository.ElectionResultRepository;
@@ -26,13 +27,11 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	}
 
 	@Override
-	public boolean update(ElectionResult result) {
-		if (repository.existsById(result.getId())) {
-			repository.save(result);
-			return true;
-		} else {
-			throw new ElectionResultNotFoundException("update","No Election Result found");
+	public ElectionResult update(ElectionResult result) {
+		if (!repository.existsById(result.getId())) {
+			throw new ElectionResultNotFoundException("Update Operation","Election Result not found!");
 		}
+		return repository.save(result);
 	}
 
 	@Override
