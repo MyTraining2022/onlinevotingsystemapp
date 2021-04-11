@@ -6,7 +6,9 @@ import org.society.dao.ElectionResultDaoImpl;
 import org.society.dao.NominatedCandidatesDaoImpl;
 import org.society.entities.NominatedCandidates;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NominatedCandidatesServiceImpl implements NominatedCandidatesService {
 	@Autowired
 	NominatedCandidatesDaoImpl dao;
@@ -23,7 +25,7 @@ public class NominatedCandidatesServiceImpl implements NominatedCandidatesServic
 	}
 
 	@Override
-	public boolean deleteNominatedCandididate(int candidateId) {
+	public boolean deleteNominatedCandididate(long candidateId) {
 		dao.delete(candidateId);
 		return false;
 	}
@@ -34,8 +36,9 @@ public class NominatedCandidatesServiceImpl implements NominatedCandidatesServic
 	}
 
 	@Override
-	public NominatedCandidates searchByCandidateId(int id) {
-		return null;
+	public NominatedCandidates searchByCandidateId(long id) {
+		return dao.getByCandidateId(id);
+
 	}
 }
 	

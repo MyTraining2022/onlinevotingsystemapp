@@ -10,9 +10,9 @@ public interface NominatedCandidatesService {
 
 	public boolean updateNominatedCandidateDetails(NominatedCandidates candidate);
 
-	public boolean deleteNominatedCandididate(int candidateId);
+	public boolean deleteNominatedCandididate(long candidateId);
 
 	public List<NominatedCandidates> viewNominatedCandidatesList();
 
-	public NominatedCandidates searchByCandidateId(int id);
+	public NominatedCandidates searchByCandidateId(long id);
 }

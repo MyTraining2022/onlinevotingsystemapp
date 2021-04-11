@@ -10,5 +10,5 @@ public interface NominatedCandidatesDao {
 	public NominatedCandidates update(NominatedCandidates candidate) throws NominatedCandidateNotFoundException;
 	public boolean delete(long candidateId) throws NominatedCandidateNotFoundException;
 	public List<NominatedCandidates> getNominatedCandidatesList();
-	public NominatedCandidates searchByCandidateId(long id)throws NominatedCandidateNotFoundException;
+	public NominatedCandidates getByCandidateId(long id)throws NominatedCandidateNotFoundException;
 }

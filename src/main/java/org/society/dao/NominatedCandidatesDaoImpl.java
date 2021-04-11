@@ -7,7 +7,9 @@ import org.society.exceptions.DuplicateEntityFoundException;
 import org.society.exceptions.NominatedCandidateNotFoundException;
 import org.society.repository.NominatedCandidatesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 	@Autowired
 	NominatedCandidatesRepository nominatedCandidatesRepository;
@@ -52,7 +54,7 @@ public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 	}
 
 	@Override
-	public NominatedCandidates searchByCandidateId(long candidateId) throws NominatedCandidateNotFoundException {
+	public NominatedCandidates getByCandidateId(long candidateId) throws NominatedCandidateNotFoundException {
 		return nominatedCandidatesRepository.findByCandidateId(candidateId);
 	
 	}
