@@ -2,7 +2,7 @@ package org.society.service;
 
 import java.util.List;
 
-import org.society.dao.ElectionResultDaoImp;
+import org.society.dao.ElectionResultDaoImpl;
 import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ElectionResultServiceImpl implements ElectionResultService {
 	@Autowired
-	ElectionResultDaoImp dao;
+	ElectionResultDaoImpl dao;
 
 	@Override
 	public void addElectionResult(ElectionResult result) {

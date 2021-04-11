@@ -31,9 +31,9 @@ public class VotedListDaoImpl implements VotedListDao{
 	}
 
 	@Override
-	public boolean deletedVotedListDetails(int id) throws CastedVoteNotFoundException {
-		if(votedListRepository.existsById((long) id)) {
-			votedListRepository.deleteById((long) id);
+	public boolean deletedVotedListDetails(long id) throws CastedVoteNotFoundException {
+		if(votedListRepository.existsById( id)) {
+			votedListRepository.deleteById( id);
 			return true;
 		}
 		return false;
@@ -46,12 +46,12 @@ public class VotedListDaoImpl implements VotedListDao{
 	}
 
 	@Override
-	public VotedList searchByVoterId(int voterId) throws VoterNotFoundException {
+	public VotedList searchByVoterId(long voterId) throws VoterNotFoundException {
 		return votedListRepository.findById(voterId);
 	}
 
 	@Override
-	public List<VotedList> searchByNominatedCandidateId(int candidateId) throws NominatedCandidateNotFoundException {
+	public List<VotedList> searchByNominatedCandidateId(long candidateId) throws NominatedCandidateNotFoundException {
 		return null;
 	}
 

@@ -37,9 +37,9 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 	}
 
 	@Override
-	public boolean deleteRegisteredVoter(int voterId) throws VoterNotFoundException {
-		if (registeredSocietyVotersRepository.existsById((long) voterId)) {
-			registeredSocietyVotersRepository.deleteById((long) voterId);
+	public boolean deleteRegisteredVoter(long voterId) throws VoterNotFoundException {
+		if (registeredSocietyVotersRepository.existsById( voterId)) {
+			registeredSocietyVotersRepository.deleteById( voterId);
 			return true;
 		}
 		return false;
@@ -53,7 +53,7 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 	}
 
 	@Override
-	public RegisteredSocietyVoters searchByVoterID(int voterId) throws VoterNotFoundException {
+	public RegisteredSocietyVoters searchByVoterID(long voterId) throws VoterNotFoundException {
 		return registeredSocietyVotersRepository.findById(voterId);
 	}
 

@@ -1,94 +1,153 @@
 package org.society.service;
 
 import org.society.dao.AdminDaoImp;
-
+import org.society.dao.ElectionOfficerDaoImpl;
+import org.society.dao.ElectionResultDaoImpl;
 import org.society.entities.Admin;
+import org.society.entities.CooperativeSociety;
 import org.society.entities.ElectionOfficer;
 import org.society.entities.ElectionResult;
 import org.society.entities.NominatedCandidates;
+import org.society.entities.RegisteredSocietyVoters;
+import org.society.entities.User;
+import org.society.entities.VotedList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AdminServiceImp implements AdminService {
 
 	@Autowired
-	AdminDaoImp dao;
-
+	AdminDaoImp daoAdmin;
+	@Autowired
+	ElectionOfficerDaoImpl daoElectionOfficer;
+	@Autowired
+	ElectionResultDaoImpl daoElectionResult;
+	@Autowired
+	//NominatedCandidateDaoImp daoNominatedCandidate;
+	
 	@Override
-	public void addAdminDetails(Admin officer) {
-		// TODO Auto-generated method stub
+	public void addAdminDetails(Admin admin) {
+		daoAdmin.save(admin);
 		
 	}
-
 	@Override
-	public boolean updateAdminDetails(Admin officer) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateAdminDetails(Admin admin) {
+		daoAdmin.update(admin);
+		return true;
 	}
-
 	@Override
 	public boolean deleteAdmin(long adminID) {
-		// TODO Auto-generated method stub
-		return false;
+		daoAdmin.delete(adminID);
+		return true;
 	}
-
 	@Override
 	public Admin viewAdminById(long adminId) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoAdmin.getAdmin(adminId);
+		 
 	}
-
 	@Override
 	public boolean addElectionOfficerDetails(ElectionOfficer officer) {
-		// TODO Auto-generated method stub
-		return false;
+		daoElectionOfficer.save(officer);
+		return true;
 	}
-
 	@Override
 	public boolean updateElectionOfficerDetails(ElectionOfficer officer) {
-		// TODO Auto-generated method stub
-		return false;
+		daoElectionOfficer.update(officer);
+		return true;
 	}
-
 	@Override
 	public boolean deleteElectionOfficer(long officerId) {
-		// TODO Auto-generated method stub
+		daoElectionOfficer.delete(officerId);
 		return false;
 	}
-
 	@Override
 	public void addElectionResult(ElectionResult result) {
-		// TODO Auto-generated method stub
+		daoElectionResult.save(result);
 		
 	}
-
 	@Override
 	public boolean updateElectionResult(ElectionResult result) {
-		// TODO Auto-generated method stub
-		return false;
+		daoElectionResult.update(result);
+		return true;
 	}
-
 	@Override
 	public boolean deleteElectionResult(ElectionResult result) {
-		// TODO Auto-generated method stub
-		return false;
+		daoElectionResult.delete(result);
+		return true;
 	}
-
 	@Override
 	public boolean addNominatedCandidate(NominatedCandidates candidate) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public void updateNominatedCandidateDetails(NominatedCandidates candidate) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void deleteNominatedCandididate(long candidateId) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void addSocietyDetails(CooperativeSociety society) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean updateSocietyDetails(CooperativeSociety society) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean deleteSociety(long societyId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void voterRegistration(RegisteredSocietyVoters voter) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean updateRegisteredVoterDetails(RegisteredSocietyVoters voter) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean deleteRegisteredVoter(long voterId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void registerUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean updateUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean deleteUser(long userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void castVotedList(VotedList votedList) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean updateVotedListDetails(VotedList votedList) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean deletedVotedListDetails(long id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

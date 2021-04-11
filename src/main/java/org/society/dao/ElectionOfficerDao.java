@@ -11,9 +11,9 @@ public interface ElectionOfficerDao {
 
 	public boolean update(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
 
-	public boolean delete(int officerId) throws ElectionOfficerNotFoundException;
+	public boolean delete(long officerId) throws ElectionOfficerNotFoundException;
 
-	public ElectionOfficer getElectionOfficerById(int officerId) throws ElectionOfficerNotFoundException;
+	public ElectionOfficer getElectionOfficerById(long officerId) throws ElectionOfficerNotFoundException;
 
 	public List<ElectionOfficer> getElectionOfficerList();
 	

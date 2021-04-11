@@ -10,11 +10,11 @@ public interface RegisteredSocietyVotersDao {
 
 	public boolean updateRegisteredVoterDetails(RegisteredSocietyVoters voter) throws VoterNotFoundException;
 
-	public boolean deleteRegisteredVoter(int voterId) throws VoterNotFoundException;
+	public boolean deleteRegisteredVoter(long voterId) throws VoterNotFoundException;
 
 	public List<RegisteredSocietyVoters> viewRegisteredVoterList();
 
-	public RegisteredSocietyVoters searchByVoterID(int voterId) throws VoterNotFoundException;
+	public RegisteredSocietyVoters searchByVoterID(long voterId) throws VoterNotFoundException;
 
 	public RegisteredSocietyVoters loginValidate(String userid, String password) throws VoterNotFoundException;
 }

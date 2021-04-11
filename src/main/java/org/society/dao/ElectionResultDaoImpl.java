@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ElectionResultDaoImp implements ElectionResultDao {
+public class ElectionResultDaoImpl implements ElectionResultDao {
 	@Autowired
 	ElectionResultRepository repository;
 
