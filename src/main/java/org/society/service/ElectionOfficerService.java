@@ -10,9 +10,9 @@ public interface ElectionOfficerService {
 
 	public ElectionOfficer updateElectionOfficerDetails(ElectionOfficer officer);
 
-	public boolean deleteElectionOfficer(int officerId);
+	public boolean deleteElectionOfficer(long officerId);
 
-	public ElectionOfficer viewElectionOfficerById(int officerId);
+	public ElectionOfficer viewElectionOfficerById(long officerId);
 
 	public List<ElectionOfficer> viewElectionOfficerList();
 	
