@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ElectionResultRepository extends JpaRepository<ElectionResult, Long> {
 
 	List<ElectionResult> findAll();
-	ElectionResult findById();
+	
 	
 }
