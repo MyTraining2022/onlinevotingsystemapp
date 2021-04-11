@@ -17,11 +17,11 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	ElectionResultRepository repository;
 
 	@Override
-	public void save(ElectionResult result) {
+	public ElectionResult save(ElectionResult result) {
 		if (repository.existsById(result.getId())) {
-			throw new DuplicateEntityFoundException("Duplicate Election Result found");
+			throw new DuplicateEntityFoundException("Save operation","Duplicate Election Result found");
 		}
-		repository.save(result);
+		return repository.save(result);
 
 	}
 

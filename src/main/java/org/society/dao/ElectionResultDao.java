@@ -7,7 +7,7 @@ import org.society.exceptions.ElectionResultNotFoundException;
 import org.society.exceptions.NominatedCandidateNotFoundException;
 
 public interface ElectionResultDao {
-	public void save(ElectionResult result);
+	public ElectionResult save(ElectionResult result);
 	
 	public boolean update(ElectionResult result) throws ElectionResultNotFoundException;
 	

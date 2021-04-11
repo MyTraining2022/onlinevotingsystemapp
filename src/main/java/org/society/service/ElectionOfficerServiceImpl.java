@@ -2,6 +2,7 @@ package org.society.service;
 
 import java.util.List;
 
+import org.society.dao.ElectionOfficerDao;
 import org.society.dao.ElectionOfficerDaoImpl;
 import org.society.entities.ElectionOfficer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class ElectionOfficerServiceImpl implements ElectionOfficerService {
 
 	@Autowired
-	ElectionOfficerDaoImpl dao;
+	private ElectionOfficerDao dao;
 	
 	
 	@Override

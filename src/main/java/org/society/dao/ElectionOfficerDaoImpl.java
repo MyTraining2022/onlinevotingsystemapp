@@ -17,13 +17,12 @@ public class ElectionOfficerDaoImpl implements ElectionOfficerDao {
 	ElectionOfficerRepository repository;
 
 	@Override
-	public void save(ElectionOfficer officer) {
+	public ElectionOfficer  save(ElectionOfficer officer) {
 		if(repository.existsById(officer.getId())) {
-			throw new DuplicateEntityFoundException("Duplicate Election Officer can not be saved");
+			throw new DuplicateEntityFoundException("Save operation","Duplicate Election Officer can not be saved");
 		}
-		if(officer != null) {
-			repository.save(officer);
-		}
+			return repository.save(officer);
+		
 		
 	}
 

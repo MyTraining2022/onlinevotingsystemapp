@@ -7,7 +7,7 @@ import org.society.exceptions.ElectionOfficerNotFoundException;
 
 public interface ElectionOfficerDao {
 	
-	public void save(ElectionOfficer officer);
+	public ElectionOfficer save(ElectionOfficer officer);
 
 	public boolean update(ElectionOfficer officer) throws ElectionOfficerNotFoundException;
 
