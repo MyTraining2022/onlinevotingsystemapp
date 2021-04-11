@@ -11,6 +11,10 @@ public class DuplicateEntityFoundException extends RuntimeException {
 		this.operation = operation;
 		
 	}
+	public DuplicateEntityFoundException(String message) {
+		super(message);
+		
+	}
 	
 	public String getMessage() {
 		return operation;

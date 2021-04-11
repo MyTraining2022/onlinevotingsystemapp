@@ -6,11 +6,11 @@ import org.society.entities.NominatedCandidates;
 
 public interface NominatedCandidatesService {
 	
-	public int addNominatedCandidate(NominatedCandidates candidate);
+	public void saveNominatedCandidate(NominatedCandidates candidate);
 
-	public int updateNominatedCandidateDetails(NominatedCandidates candidate);
+	public boolean updateNominatedCandidateDetails(NominatedCandidates candidate);
 
-	public int deleteNominatedCandididate(int candidateId);
+	public boolean deleteNominatedCandididate(int candidateId);
 
 	public List<NominatedCandidates> viewNominatedCandidatesList();
 
