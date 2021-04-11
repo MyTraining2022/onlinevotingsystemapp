@@ -10,10 +10,13 @@ import org.society.entities.VotedList;
 import org.society.exceptions.CastedVoteNotFoundException;
 import org.society.exceptions.VoterNotFoundException;
 import org.society.repository.VotedListRepository;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+@Component
 public class VotedListDaoImpl implements VotedListDao{
 
-	VotedListRepository votedListRepository;
+	@Autowired
+	private VotedListRepository votedListRepository;
 	
 	@Override
 	public int cast(VotedList votedList) {
