@@ -26,7 +26,7 @@ public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 		if (candidate != null) {
 			nominatedCandidatesRepository.save(candidate);
 		}
-
+//hi help my git
 	}
 
 	@Override
