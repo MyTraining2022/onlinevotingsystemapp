@@ -1,3 +1,6 @@
+/*
+ * @author: Aditya Mohapatra
+ */
 
 package org.society.entities;
 
@@ -20,10 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
-
-/*
- * @author: Aditya Mohapatra
- */
 
 @Entity
 @Table(name = "Voted_list")
