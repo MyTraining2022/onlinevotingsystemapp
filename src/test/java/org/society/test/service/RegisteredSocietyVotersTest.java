@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.society.dao.RegisteredSocietyVotersDao;
-import org.society.entities.ElectionResult;
 import org.society.entities.RegisteredSocietyVoters;
 import org.society.repository.RegisteredSocietyVotersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,8 @@ public class RegisteredSocietyVotersTest {
 	
 	@Test
 	public void addRegisteredSocietyVotersDetailsTest() {
-		RegisteredSocietyVoters  registeredSocietyVoters= new RegisteredSocietyVoters(1l, "12345", "Ashish", "shaw", "Bcrec", "Female", "obc", "9876543210", "mihir@email.com", "add1", "add23", "mondali", "Dis", 678543, true, null);
+		RegisteredSocietyVoters  registeredSocietyVoters= new RegisteredSocietyVoters(3l, "32345", "Aditya", "Kumar", "Bcrec3", "Male", "obc", "2876543210", "aditya@email.com", "add1", "add23", "mondal", "Dis", 278543, true, null);
 		when(registeredSocietyVotersRepository.save(registeredSocietyVoters)).thenReturn(registeredSocietyVoters);
-		//assertEquals(registeredSocietyVoters, registeredSocietyVotersDao.save(registeredSocietyVoters));
+		assertEquals(registeredSocietyVoters, registeredSocietyVotersDao.save(registeredSocietyVoters));
 	}
 }

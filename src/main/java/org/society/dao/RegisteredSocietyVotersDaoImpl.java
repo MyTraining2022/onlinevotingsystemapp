@@ -18,22 +18,20 @@ public class RegisteredSocietyVotersDaoImpl implements RegisteredSocietyVotersDa
 	RegisteredSocietyVotersRepository registeredSocietyVotersRepository;
 
 	@Override
-	public void save(RegisteredSocietyVoters voter) {
+	public RegisteredSocietyVoters save(RegisteredSocietyVoters voter) {
 		if (registeredSocietyVotersRepository.existsById(voter.getId())) {
 			throw new DuplicateEntityFoundException("Duplicate Voter can not be saved");
 		}
-		if (voter != null) {
-			registeredSocietyVotersRepository.save(voter);
-		}
+		return registeredSocietyVotersRepository.save(voter);
+		
 	}
 
 	@Override
-	public boolean update(RegisteredSocietyVoters voter) throws VoterNotFoundException {
-		if (registeredSocietyVotersRepository.existsById(voter.getId())) {
+	public RegisteredSocietyVoters update(RegisteredSocietyVoters voter) throws VoterNotFoundException {
+		if (registeredSocietyVotersRepository.existsById(voter.getId())) 
 			registeredSocietyVotersRepository.save(voter);
-			return true;
-		}
-		return false;
+			
+		return registeredSocietyVotersRepository.save(voter);
 	}
 
 	@Override
