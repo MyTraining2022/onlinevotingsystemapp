@@ -2,6 +2,7 @@ package org.society.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -30,10 +32,12 @@ public class ElectionResult implements Serializable {
 	private long id;
 	@Basic
 	private LocalDate pollingDate;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "election_result_id")
-	private List<NominatedCandidates> candidate;
 	
+	//@OneToMany(mappedBy= "electionResult",cascade = CascadeType.ALL)
+	//private List<NominatedCandidates> nominatedCandidates = new ArrayList<NominatedCandidates>();
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nominated_candidates_fk")
+	private NominatedCandidates nominatedCandidates;
 	@Transient
 	private String cooperativeSocietyName;
 	private int totalSocietyVotes;
@@ -48,14 +52,14 @@ public class ElectionResult implements Serializable {
 		super();
 	}
 
-	public ElectionResult(long id, LocalDate pollingDate, List<NominatedCandidates> candidate,
-			@NotNull(message = "Cooperative Society Name can not be null") String cooperativeSocietyName,
-			int totalSocietyVotes, int totalPolledVotes, float totalPollingPercentage, int totalCandidateVotes,
-			float candidateVotesPercentage, @NotNull(message = "Result can not be null") String result) {
+	public ElectionResult(long id, LocalDate pollingDate, NominatedCandidates nominatedCandidates,
+			String cooperativeSocietyName, int totalSocietyVotes, int totalPolledVotes, float totalPollingPercentage,
+			int totalCandidateVotes, float candidateVotesPercentage,
+			@NotNull(message = "Result can not be null") String result) {
 		super();
 		this.id = id;
 		this.pollingDate = pollingDate;
-		this.candidate = candidate;
+		this.nominatedCandidates = nominatedCandidates;
 		this.cooperativeSocietyName = cooperativeSocietyName;
 		this.totalSocietyVotes = totalSocietyVotes;
 		this.totalPolledVotes = totalPolledVotes;
@@ -81,12 +85,12 @@ public class ElectionResult implements Serializable {
 		this.pollingDate = pollingDate;
 	}
 
-	public List<NominatedCandidates> getCandidate() {
-		return candidate;
+	public NominatedCandidates getNominatedCandidates() {
+		return nominatedCandidates;
 	}
 
-	public void setCandidate(List<NominatedCandidates> candidate) {
-		this.candidate = candidate;
+	public void setNominatedCandidates(NominatedCandidates nominatedCandidates) {
+		this.nominatedCandidates = nominatedCandidates;
 	}
 
 	public String getCooperativeSocietyName() {
@@ -147,11 +151,19 @@ public class ElectionResult implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ElectionResult [id=" + id + ", pollingDate=" + pollingDate + ", candidate=" + candidate
-				+ ", cooperativeSocietyName=" + cooperativeSocietyName + ", totalSocietyVotes=" + totalSocietyVotes
-				+ ", totalPolledVotes=" + totalPolledVotes + ", totalPollingPercentage=" + totalPollingPercentage
-				+ ", totalCandidateVotes=" + totalCandidateVotes + ", candidateVotesPercentage="
-				+ candidateVotesPercentage + ", result=" + result + "]";
+		return "ElectionResult [id=" + id + ", pollingDate=" + pollingDate + ", nominatedCandidates="
+				+ nominatedCandidates + ", cooperativeSocietyName=" + cooperativeSocietyName + ", totalSocietyVotes="
+				+ totalSocietyVotes + ", totalPolledVotes=" + totalPolledVotes + ", totalPollingPercentage="
+				+ totalPollingPercentage + ", totalCandidateVotes=" + totalCandidateVotes
+				+ ", candidateVotesPercentage=" + candidateVotesPercentage + ", result=" + result + "]";
 	}
+	
+	
+
+	
+	
+	
+
+	
 
 }

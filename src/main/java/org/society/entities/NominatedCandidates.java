@@ -13,6 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,33 +26,64 @@ public class NominatedCandidates implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long candidateId;
+	//add unique constraint here
 	private String nominationFormNo;
-	private RegisteredSocietyVoters societyVoter;
+	
 	private String partyName;
 	private String symbol;
 	private float securityDeposit;
     private boolean oathOrAffirmationSummited;
     private boolean policeVerificationDone;
     private boolean approvedByElectionOfficer;
+    
+    @OneToOne(mappedBy = "nominatedCandidates") 
+    private RegisteredSocietyVoters registeredSocietyVoter;
+    
+    @OneToOne(mappedBy = "nominatedCandidates")
+    private VotedList votedList;
+    
+    //@ManyToOne
+   // @JoinColumn(name = "election_result_fk")
+    @OneToOne(mappedBy = "nominatedCandidates")
+    private ElectionResult electionResult;
 	
     public NominatedCandidates() {
 		super();
 	}
+    
+    
 
-	public NominatedCandidates(long candidateId, String nominationFormNo, RegisteredSocietyVoters society_Voter,
-			String partyName, String symbol, float securityDeposit, boolean oathOrAffirmationSummited,
-			boolean policeVerificationDone, boolean approvedByElectionOfficer) {
+	public NominatedCandidates(long candidateId, String nominationFormNo, String partyName, String symbol,
+			float securityDeposit, boolean oathOrAffirmationSummited, boolean policeVerificationDone,
+			boolean approvedByElectionOfficer, RegisteredSocietyVoters registeredSocietyVoter, VotedList votedList,
+			ElectionResult electionResult) {
 		super();
 		this.candidateId = candidateId;
 		this.nominationFormNo = nominationFormNo;
-		this.societyVoter = society_Voter;
 		this.partyName = partyName;
 		this.symbol = symbol;
 		this.securityDeposit = securityDeposit;
 		this.oathOrAffirmationSummited = oathOrAffirmationSummited;
 		this.policeVerificationDone = policeVerificationDone;
 		this.approvedByElectionOfficer = approvedByElectionOfficer;
+		this.registeredSocietyVoter = registeredSocietyVoter;
+		this.votedList = votedList;
+		this.electionResult = electionResult;
 	}
+
+
+
+	public VotedList getVotedList() {
+		return votedList;
+	}
+
+
+
+	public void setVotedList(VotedList votedList) {
+		this.votedList = votedList;
+	}
+
+
 
 	public long getCandidateId() {
 		return candidateId;
@@ -65,14 +99,6 @@ public class NominatedCandidates implements Serializable {
 
 	public void setNominationFormNo(String nominationFormNo) {
 		this.nominationFormNo = nominationFormNo;
-	}
-
-	public RegisteredSocietyVoters getSociety_Voter() {
-		return societyVoter;
-	}
-
-	public void setSociety_Voter(RegisteredSocietyVoters society_Voter) {
-		this.societyVoter = society_Voter;
 	}
 
 	public String getPartyName() {
@@ -123,15 +149,38 @@ public class NominatedCandidates implements Serializable {
 		this.approvedByElectionOfficer = approvedByElectionOfficer;
 	}
 
+	public RegisteredSocietyVoters getRegisteredSocietyVoter() {
+		return registeredSocietyVoter;
+	}
+
+	public void setRegisteredSocietyVoter(RegisteredSocietyVoters registeredSocietyVoter) {
+		this.registeredSocietyVoter = registeredSocietyVoter;
+	}
+
+	
+	public ElectionResult getElectionResult() {
+		return electionResult;
+	}
+
+	public void setElectionResult(ElectionResult electionResult) {
+		this.electionResult = electionResult;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "NominatedCandidates [candidateId=" + candidateId + ", nominationFormNo=" + nominationFormNo
-				+ ", society_Voter=" + societyVoter + ", partyName=" + partyName + ", symbol=" + symbol
-				+ ", securityDeposit=" + securityDeposit + ", oathOrAffirmationSummited=" + oathOrAffirmationSummited
-				+ ", policeVerificationDone=" + policeVerificationDone + ", approvedByElectionOfficer="
-				+ approvedByElectionOfficer + "]";
+				+ ", partyName=" + partyName + ", symbol=" + symbol + ", securityDeposit=" + securityDeposit
+				+ ", oathOrAffirmationSummited=" + oathOrAffirmationSummited + ", policeVerificationDone="
+				+ policeVerificationDone + ", approvedByElectionOfficer=" + approvedByElectionOfficer
+				+ ", registeredSocietyVoter=" + registeredSocietyVoter + ", votedList=" + votedList
+				+ ", electionResult=" + electionResult + "]";
 	}
-    
+
+	
+	
+	
     
     
     

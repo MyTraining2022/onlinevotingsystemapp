@@ -18,7 +18,7 @@ public class AdminDaoImp implements AdminDao {
 
 	@Override
 	public void save(Admin ad) throws DuplicateEntityFoundException {
-		if (repository.existsById(ad.getAdminId())) {
+		if (repository.existsById(ad.getId())) {
 			throw new DuplicateEntityFoundException("Duplicate Admin Found");
 		}
 		if (ad != null) {
@@ -28,7 +28,7 @@ public class AdminDaoImp implements AdminDao {
 
 	@Override
 	public boolean update(Admin ad) throws NoAdminFoundException {
-		if (repository.existsById(ad.getAdminId())) {
+		if (repository.existsById(ad.getId())) {
 			repository.save(ad);
 			return true;
 		} else {

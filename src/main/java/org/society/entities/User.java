@@ -14,7 +14,7 @@ public class User implements  Serializable  {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userId;
+	private long id;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -27,10 +27,10 @@ public class User implements  Serializable  {
 		
 	}
 
-	public User(long userId, String password, String firstName, String lastName, String email, String contactno,
+	public User(long id, String password, String firstName, String lastName, String email, String contactno,
 			String userType) {
 		super();
-		this.userId = userId;
+		this.id = id;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -39,12 +39,12 @@ public class User implements  Serializable  {
 		this.userType = userType;
 	}
 
-	public long getUserId() {
-		return userId;
+	public long getId() {
+		return id;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getPassword() {
@@ -97,8 +97,10 @@ public class User implements  Serializable  {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", contactno=" + contactno + ", userType=" + userType + "]";
+		return "User [id=" + id + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", contactno=" + contactno + ", userType=" + userType + "]";
 	}
+	
+	
 	
 }

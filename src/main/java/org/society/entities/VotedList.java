@@ -38,17 +38,21 @@ public class VotedList implements Serializable {
 	private LocalDate pollingDateTime;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "society_id")
-	private CooperativeSociety society;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cooperative_society_fk")
+	private CooperativeSociety cooperativeSociety;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Voter_list_id")
-	private List<RegisteredSocietyVoters> voter;
+	//@OneToMany(mappedBy = "votedList", cascade = CascadeType.ALL)
+	//private List<RegisteredSocietyVoters> registeredSocietyVoters;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "registered_society_voters_fk")
+	private RegisteredSocietyVoters registeredSocietyVoters;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Voter_list_id")
-	private List<NominatedCandidates> candidate;
+	//@OneToMany(mappedBy = "votedList2", cascade = CascadeType.ALL)
+	//private List<NominatedCandidates> nominatedCandidates;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nominated_candidates_fk")
+	private NominatedCandidates nominatedCandidates;
 
 	@Basic
 	private LocalTime startTime;
@@ -57,19 +61,6 @@ public class VotedList implements Serializable {
 
 	public VotedList() {
 		super();
-	}
-
-	public VotedList(long id, LocalDate pollingDateTime, CooperativeSociety society,
-			List<RegisteredSocietyVoters> voter, List<NominatedCandidates> candidate, LocalTime startTime,
-			LocalTime endTime) {
-		super();
-		this.id = id;
-		this.pollingDateTime = pollingDateTime;
-		this.society = society;
-		this.voter = voter;
-		this.candidate = candidate;
-		this.startTime = startTime;
-		this.endTime = endTime;
 	}
 
 	public long getId() {
@@ -88,28 +79,28 @@ public class VotedList implements Serializable {
 		this.pollingDateTime = pollingDateTime;
 	}
 
-	public CooperativeSociety getSociety() {
-		return society;
+	public CooperativeSociety getCooperativeSociety() {
+		return cooperativeSociety;
 	}
 
-	public void setSociety(CooperativeSociety society) {
-		this.society = society;
+	public void setCooperativeSociety(CooperativeSociety cooperativeSociety) {
+		this.cooperativeSociety = cooperativeSociety;
 	}
 
-	public List<RegisteredSocietyVoters> getVoter() {
-		return voter;
+	public RegisteredSocietyVoters getRegisteredSocietyVoters() {
+		return registeredSocietyVoters;
 	}
 
-	public void setVoter(List<RegisteredSocietyVoters> voter) {
-		this.voter = voter;
+	public void setRegisteredSocietyVoters(RegisteredSocietyVoters registeredSocietyVoters) {
+		this.registeredSocietyVoters = registeredSocietyVoters;
 	}
 
-	public List<NominatedCandidates> getCandidate() {
-		return candidate;
+	public NominatedCandidates getNominatedCandidates() {
+		return nominatedCandidates;
 	}
 
-	public void setCandidate(List<NominatedCandidates> candidate) {
-		this.candidate = candidate;
+	public void setNominatedCandidates(NominatedCandidates nominatedCandidates) {
+		this.nominatedCandidates = nominatedCandidates;
 	}
 
 	public LocalTime getStartTime() {
@@ -128,11 +119,11 @@ public class VotedList implements Serializable {
 		this.endTime = endTime;
 	}
 
-	@Override
-	public String toString() {
-		return "VotedList [id=" + id + ", pollingDateTime=" + pollingDateTime + ", society=" + society + ", voter="
-				+ voter + ", candidate=" + candidate + ", startTime=" + startTime + ", endTime=" + endTime + "]";
-	}
+	
+	
+	
+	
+	
 	
 	
 

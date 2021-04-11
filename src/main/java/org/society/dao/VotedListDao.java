@@ -12,11 +12,11 @@ public interface VotedListDao {
 
 	public boolean updateVotedListDetails(VotedList votedList) throws CastedVoteNotFoundException;
 
-	public boolean deletedVotedListDetails(int id) throws CastedVoteNotFoundException;
+	public boolean deletedVotedListDetails(long id) throws CastedVoteNotFoundException;
 
 	public List<VotedList> viewVotedList();
 
-	public VotedList searchByVoterId(int voterId) throws VoterNotFoundException;
+	public VotedList searchByVoterId(String voterId) throws VoterNotFoundException;
 
-	public List<VotedList> searchByNominatedCandidateId(int candidateId) throws NominatedCandidateNotFoundException;
+	public List<VotedList> searchByNominatedCandidateId(long candidateId) throws NominatedCandidateNotFoundException;
 }

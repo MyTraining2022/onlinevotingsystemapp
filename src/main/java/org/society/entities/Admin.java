@@ -13,8 +13,8 @@ public class Admin implements Serializable {
 	private static final long serialVersionUID = 2L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "admin_id")
-	private long adminId;
+	
+	private long id;
 	private String adminName;
 	private String adminPassword;
 	
@@ -22,36 +22,42 @@ public class Admin implements Serializable {
 		super();
 		
 	}
-	public Admin(long adminId, String adminName, String adminPassword) {
+
+	public Admin(long id, String adminName, String adminPassword) {
 		super();
-		this.adminId = adminId;
+		this.id = id;
 		this.adminName = adminName;
 		this.adminPassword = adminPassword;
 	}
-	public long getAdminId() {
-		return adminId;
+
+	public long getId() {
+		return id;
 	}
-	public void setAdminId(long adminId) {
-		this.adminId = adminId;
+
+	public void setId(long id) {
+		this.id = id;
 	}
+
 	public String getAdminName() {
 		return adminName;
 	}
+
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
+
 	public String getAdminPassword() {
 		return adminPassword;
 	}
+
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
+		return "Admin [id=" + id + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
 	}
-	
 	
 	
 
