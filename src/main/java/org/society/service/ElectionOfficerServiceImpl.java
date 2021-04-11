@@ -25,13 +25,13 @@ public class ElectionOfficerServiceImpl implements ElectionOfficerService {
 	}
 
 	@Override
-	public boolean deleteElectionOfficer(int officerId) {
+	public boolean deleteElectionOfficer(long officerId) {
 		
 		return dao.delete(officerId);
 	}
 
 	@Override
-	public ElectionOfficer viewElectionOfficerById(int officerId) {
+	public ElectionOfficer viewElectionOfficerById(long officerId) {
 		
 		return dao.getElectionOfficerById(officerId);
 	}
