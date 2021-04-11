@@ -17,65 +17,88 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-
 @Entity
 @Table(name = "Registered_Society_Voters")
-public class RegisteredSocietyVoters implements Serializable
-{
+public class RegisteredSocietyVoters implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	// Voter Id card number must be unique
 	@NotBlank(message = "Voter Id number can not be null")
+	@Column(unique = true)
 	private String voterIdCardNo;
+	
 	@NotNull(message = "Name is Required")
-	@Length(min = 5, max = 30, message= "Name size must be between 5 and 30")
+	@Length(min = 2, max = 30, message = "Name size must be between 5 and 30")
 	private String firstName;
+	
+	
 	private String lastName;
+	
+	
 	@NotNull(message = "Password is Required")
-	@Length(min = 5, max = 8, message= "Name size must be between 5 and 8")
+	@Length(min = 5, max = 15, message = "Name size must be between 5 and 15")
 	private String password;
+	
+	
 	@NotNull(message = "Gender is Required")
 	private String gender;
+	
+	@NotBlank(message = "Reservation Category is required")
 	private String reservationCategory;
+	
 	@NotNull(message = "Name is Required")
+	@Size(min = 10,max=13, message = "mobile number should be valid")
 	private String mobileno;
+	
+	//@email
+	@Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
 	@NotNull(message = "Email is Required")
 	private String emailId;
-	private String addressLine1;
-	private String addressLine2;
-	private String mandal;
-	private String district;
-	private int pincode;
 	
+	@NotBlank
+	private String addressLine1;
+	
+	private String addressLine2;
+	
+	@NotBlank
+	private String mandal;
+	
+	@NotBlank
+	private String district;
+	
+	@NotNull(message = "Pincode is required")
+	@Min(6)
+	private int pincode;
+
 	private boolean castedVote;
 	
+	// OneToOne relationship one Voter can have only one Society
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cooperative_society_fk")
 	private CooperativeSociety cooperativeSociety;
-	
-	
-	
+
 	public RegisteredSocietyVoters() {
 		super();
 	}
 
-	public RegisteredSocietyVoters(long id, @NotBlank(message = "Voter Id number can not be null") String voterIdCardNo,
-			@NotNull(message = "Name is Required") @Length(min = 5, max = 30, message = "Name size must be between 5 and 30") String firstName,
-			String lastName,
-			@NotNull(message = "Password is Required") @Length(min = 5, max = 8, message = "Name size must be between 5 and 8") String password,
-			@NotNull(message = "Gender is Required") String gender, String reservationCategory,
-			@NotNull(message = "Name is Required") String mobileno,
-			@NotNull(message = "Email is Required") String emailId, String addressLine1, String addressLine2,
-			String mandal, String district, int pincode, boolean castedVote, CooperativeSociety cooperativeSociety) {
+	public RegisteredSocietyVoters(long id, String voterIdCardNo, String firstName, String lastName, String password,
+			String gender, String reservationCategory, String mobileno, String emailId, String addressLine1,
+			String addressLine2, String mandal, String district, int pincode, boolean castedVote,
+			CooperativeSociety cooperativeSociety) {
 		super();
 		this.id = id;
 		this.voterIdCardNo = voterIdCardNo;
@@ -233,12 +256,4 @@ public class RegisteredSocietyVoters implements Serializable
 				+ "]";
 	}
 
-	
-
-	
-	
-	
-	
-	
-	
 }

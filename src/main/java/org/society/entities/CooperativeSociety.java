@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Cooperative_Society")
 public class CooperativeSociety implements Serializable{
@@ -20,14 +22,25 @@ public class CooperativeSociety implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long id;
 	
+	@NotNull
 	private String societyName;
+	
+	@NotNull
 	private String headOfSociety;
+	
+	@NotNull
 	private String village;
+	
+	@NotNull
 	private String mandal;
+	
+	@NotNull
 	private String district;
+	
+	@NotNull(message = "Pincode is required")
+	@Min(6)
 	private String pincode;
 	
 

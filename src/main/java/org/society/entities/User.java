@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class User implements  Serializable  {
 	/**
@@ -15,11 +17,22 @@ public class User implements  Serializable  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotNull
 	private String password;
+	
+	@NotNull
 	private String firstName;
+	
 	private String lastName;
+	
+	@NotNull
 	private String email;
+	
+	@NotNull
 	private String contactno;
+	
+	@NotNull
 	private String userType; // only two type
 	
 	public User() {

@@ -27,16 +27,16 @@ public class DBinitVotedList implements CommandLineRunner {
 		
 		CooperativeSociety cs = new CooperativeSociety(1l, "BKgdgdggdgg", "Arun Sdgdgdg", "village", "mandal", "district", "7485");
 		
-		RegisteredSocietyVoters rs = new RegisteredSocietyVoters(1l, "788f", "shodgdgdg", "shawdgdg", "555fdgd", "male", "gen", "895255dgdgdd", "email", "add1", "add23", "mandal", "dis", 74441, false, cs);
+		RegisteredSocietyVoters rs = new RegisteredSocietyVoters(1l, "12345", "shodgdgdg", "shawdgdg", "555fdgd", "male", "gen", "895255dgdgdd", "dummy@email.com", "add1", "add23", "mandal", "dis", 74441, false, cs);
 		
 		
-		NominatedCandidates nc = new NominatedCandidates(55l, 55588l, "Sjdlfgdjgl", "jjflll", 88885, false, false, false, rs);
+		NominatedCandidates nc = new NominatedCandidates(55l, 55588l, "Sjdlfgdjgl", "jjflll", 88885, true, true, true, rs);
 		
 		VotedList vl = new VotedList(1L, LocalDate.now(), cs, rs, nc, LocalTime.now(), LocalTime.now());
 		
 		votedListRepository.save(vl);
 		
-		RegisteredSocietyVoters rs2 = new RegisteredSocietyVoters(2l, "788f", "shodgdgdg", "shawdgdg", "555fdgd", "male", "gen", "895255dgdgdd", "email", "add1", "add23", "mandal", "dis", 74441, false, cs);
+		RegisteredSocietyVoters rs2 = new RegisteredSocietyVoters(2l, "788f", "shodgdgdg", "shawdgdg", "555fdgd", "male", "gen", "895255dgdgdd", "dummy@email.com", "add1", "add23", "mandal", "dis", 74441, false, cs);
 
 		
 		VotedList v2 = new VotedList(2L, LocalDate.now(), cs, rs2, nc, LocalTime.now(), LocalTime.now());

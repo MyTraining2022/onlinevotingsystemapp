@@ -7,15 +7,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Admin implements Serializable {
 	
 	private static final long serialVersionUID = 2L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private long id;
+	
+	@NotNull
 	private String adminName;
+	
+	@NotNull
 	private String adminPassword;
 	
 	public Admin() {

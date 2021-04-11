@@ -18,35 +18,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "Nominated_Candidates")
 public class NominatedCandidates implements Serializable {
-	
+
 	private static final long serialVersionUID = 99L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long candidateId;
-	//add unique constraint here
+	// add unique constraint here
+	//@Column(unique = true)
 	private long nominationFormNo;
-	
+
 	private String partyName;
+
 	private String symbol;
+
+	@Min(value = 0, message = "Security Deposit should not be less than 0")
 	private float securityDeposit;
-    private boolean oathOrAffirmationSummited;
-    private boolean policeVerificationDone;
-    private boolean approvedByElectionOfficer;
-    
-   @OneToOne(cascade = CascadeType.ALL) 
-   @JoinColumn(name = "registered_society_voter_fk")
-    private RegisteredSocietyVoters registeredSocietyVoter;
-    
-	
-    public NominatedCandidates() {
+
+	// It must be true than only a candidate can complete his registration process
+	@AssertTrue
+	private boolean oathOrAffirmationSummited;
+
+	@AssertTrue
+	private boolean policeVerificationDone;
+
+	@AssertTrue
+	private boolean approvedByElectionOfficer;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "registered_society_voter_fk")
+	private RegisteredSocietyVoters registeredSocietyVoter;
+
+	public NominatedCandidates() {
 		super();
 	}
-    
-    
 
 	public NominatedCandidates(long candidateId, long nominationFormNo, String partyName, String symbol,
 			float securityDeposit, boolean oathOrAffirmationSummited, boolean policeVerificationDone,
@@ -63,97 +73,77 @@ public class NominatedCandidates implements Serializable {
 		this.registeredSocietyVoter = registeredSocietyVoter;
 	}
 
-
-
 	public long getCandidateId() {
 		return candidateId;
 	}
-
 
 	public void setCandidateId(long candidateId) {
 		this.candidateId = candidateId;
 	}
 
-
 	public long getNominationFormNo() {
 		return nominationFormNo;
 	}
-
 
 	public void setNominationFormNo(long nominationFormNo) {
 		this.nominationFormNo = nominationFormNo;
 	}
 
-
 	public String getPartyName() {
 		return partyName;
 	}
-
 
 	public void setPartyName(String partyName) {
 		this.partyName = partyName;
 	}
 
-
 	public String getSymbol() {
 		return symbol;
 	}
-
 
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
 
-
 	public float getSecurityDeposit() {
 		return securityDeposit;
 	}
-
 
 	public void setSecurityDeposit(float securityDeposit) {
 		this.securityDeposit = securityDeposit;
 	}
 
-
 	public boolean isOathOrAffirmationSummited() {
 		return oathOrAffirmationSummited;
 	}
-
 
 	public void setOathOrAffirmationSummited(boolean oathOrAffirmationSummited) {
 		this.oathOrAffirmationSummited = oathOrAffirmationSummited;
 	}
 
-
 	public boolean isPoliceVerificationDone() {
 		return policeVerificationDone;
 	}
-
 
 	public void setPoliceVerificationDone(boolean policeVerificationDone) {
 		this.policeVerificationDone = policeVerificationDone;
 	}
 
-
 	public boolean isApprovedByElectionOfficer() {
 		return approvedByElectionOfficer;
 	}
-
 
 	public void setApprovedByElectionOfficer(boolean approvedByElectionOfficer) {
 		this.approvedByElectionOfficer = approvedByElectionOfficer;
 	}
 
-
 	public RegisteredSocietyVoters getRegisteredSocietyVoter() {
 		return registeredSocietyVoter;
 	}
 
-
 	public void setRegisteredSocietyVoter(RegisteredSocietyVoters registeredSocietyVoter) {
 		this.registeredSocietyVoter = registeredSocietyVoter;
 	}
-
 
 	@Override
 	public String toString() {
@@ -164,4 +154,3 @@ public class NominatedCandidates implements Serializable {
 				+ ", registeredSocietyVoter=" + registeredSocietyVoter + "]";
 	}
 }
-	
