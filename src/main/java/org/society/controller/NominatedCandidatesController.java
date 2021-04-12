@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("Nominated Candidates")
+@RequestMapping("api/NominatedCandidates")
 public class NominatedCandidatesController {
 	@Autowired
 	NominatedCandidatesService nominatedCandidatesService;
 	
 	@GetMapping(value = "{candidateId}")
-	public ResponseEntity<?> getCandidateById(@PathVariable("id") long id) {
+	public ResponseEntity<?> getCandidateById(@PathVariable("candidateId") long id) {
 		NominatedCandidates n = nominatedCandidatesService.searchByCandidateId(id);
 
 		return new ResponseEntity<NominatedCandidates>(n, HttpStatus.OK);

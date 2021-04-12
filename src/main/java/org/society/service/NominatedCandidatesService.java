@@ -6,9 +6,9 @@ import org.society.entities.NominatedCandidates;
 
 public interface NominatedCandidatesService {
 	
-	public void saveNominatedCandidate(NominatedCandidates candidate);
+	public NominatedCandidates saveNominatedCandidate(NominatedCandidates candidate);
 
-	public boolean updateNominatedCandidateDetails(NominatedCandidates candidate);
+	public NominatedCandidates updateNominatedCandidateDetails(NominatedCandidates candidate);
 
 	public boolean deleteNominatedCandididate(long candidateId);
 

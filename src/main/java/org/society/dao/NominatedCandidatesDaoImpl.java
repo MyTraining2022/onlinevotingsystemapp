@@ -1,6 +1,7 @@
 package org.society.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.society.entities.NominatedCandidates;
 import org.society.exceptions.DuplicateEntityFoundException;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 	@Autowired
-	NominatedCandidatesRepository nominatedCandidatesRepository;
+	private NominatedCandidatesRepository nominatedCandidatesRepository;
 
 	@Override
 	public NominatedCandidates save(NominatedCandidates candidate) {
@@ -20,20 +21,18 @@ public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 		if (nominatedCandidatesRepository.existsById(candidate.getCandidateId())) {
 			throw new DuplicateEntityFoundException("Duplicate Candidate can not be saved");
 		}
-		
-	  return	nominatedCandidatesRepository.save(candidate);
-		}
-		
+
+		return nominatedCandidatesRepository.save(candidate);
+	}
 
 	@Override
-	public NominatedCandidates update(NominatedCandidates candidate)
-			throws NominatedCandidateNotFoundException {
+	public NominatedCandidates update(NominatedCandidates candidate) throws NominatedCandidateNotFoundException {
 		if (nominatedCandidatesRepository.existsById(candidate.getCandidateId())) {
 			nominatedCandidatesRepository.save(candidate);
-			 
+
 		}
 		return nominatedCandidatesRepository.save(candidate);
-		
+
 	}
 
 	@Override
@@ -43,20 +42,23 @@ public class NominatedCandidatesDaoImpl implements NominatedCandidatesDao {
 			nominatedCandidatesRepository.deleteById((long) candidateId);
 			return true;
 		}
-		return false;		
+		throw new NominatedCandidateNotFoundException("Nominated candidate was not found to delete!");		
 	}
 
 	@Override
 	public List<NominatedCandidates> getNominatedCandidatesList() {
-		List<NominatedCandidates> list = (List<NominatedCandidates>) nominatedCandidatesRepository
-				.findAll();
+		List<NominatedCandidates> list = (List<NominatedCandidates>) nominatedCandidatesRepository.findAll();
 		return list;
 	}
 
 	@Override
-	public NominatedCandidates getByCandidateId(long candidateId) throws NominatedCandidateNotFoundException {
-		return nominatedCandidatesRepository.findByCandidateId(candidateId);
-	
+	public NominatedCandidates getByCandidateId(long candidateId) {
+		Optional<NominatedCandidates> candidate = nominatedCandidatesRepository.findById(candidateId);
+		if (candidate.isPresent()) {
+			return candidate.get();
+		} else
+			throw new NominatedCandidateNotFoundException("Nominated Candidate not found!");
+
 	}
 
 }
