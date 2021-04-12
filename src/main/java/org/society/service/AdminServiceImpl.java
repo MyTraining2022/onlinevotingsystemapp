@@ -80,8 +80,8 @@ public class AdminServiceImpl implements AdminService {
 		return true;
 	}
 	@Override
-	public boolean deleteElectionResult(ElectionResult result) {
-		daoElectionResult.delete(result);
+	public boolean deleteElectionResult(long candidateId) {
+		daoElectionResult.delete(candidateId);
 		return true;
 	}
 	@Override

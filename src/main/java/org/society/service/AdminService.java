@@ -29,7 +29,7 @@ public interface AdminService {
 
 	public boolean updateElectionResult(ElectionResult result);
 
-	public boolean deleteElectionResult(ElectionResult result);
+	public boolean deleteElectionResult(long candidadeId);
 
 	public boolean addNominatedCandidate(NominatedCandidates candidate);
 
