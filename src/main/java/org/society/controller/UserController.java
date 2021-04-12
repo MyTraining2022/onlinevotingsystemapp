@@ -1,6 +1,4 @@
 package org.society.controller;
-
-import org.society.entities.ElectionOfficer;
 import org.society.entities.User;
 import org.society.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
