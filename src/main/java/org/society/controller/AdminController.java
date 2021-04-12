@@ -1,4 +1,4 @@
-/*package org.society.controller;
+package org.society.controller;
 
 import java.util.List;
 import javax.validation.Valid;
@@ -26,14 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @RestController
-@RequestMapping("Admins")
+@RequestMapping("/api/Admins")
 public class AdminController {
 	@Autowired
 	private AdminService adService;
-	@Autowired
-	private ElectionOfficerService eoService;
-	@Autowired
-	private ElectionResultService erService;
+	//@Autowired
+	//private ElectionOfficerService eoService;
+	//@Autowired
+	//private ElectionResultService erService;
 
 	@PostMapping
 	public String saveAdmin(@Valid @RequestBody Admin admin) {
@@ -66,7 +66,7 @@ public class AdminController {
 
 		return new ResponseEntity<Admin>(ad, HttpStatus.OK);
 	}
-
+/*
 	//ElectionOfficer
 	
 	@GetMapping(value = "{id}")
@@ -153,14 +153,14 @@ public class AdminController {
 		return "Election Result data successfully deleted";
 
 	}
-	//
-
+	
+*/
 	
 	
 	
 }
 
-*/
+
 
 
 

@@ -3,7 +3,9 @@ package org.society.service;
 import org.society.dao.AdminDaoImp;
 import org.society.dao.ElectionOfficerDaoImpl;
 import org.society.dao.ElectionResultDaoImpl;
+import org.society.dao.NominatedCandidatesDaoImpl;
 import org.society.dao.RegisteredSocietyVotersDaoImpl;
+import org.society.dao.UserDaoImpl;
 import org.society.dao.VotedListDaoImpl;
 import org.society.entities.Admin;
 import org.society.entities.CooperativeSociety;
@@ -25,14 +27,14 @@ public class AdminServiceImpl implements AdminService {
 	ElectionOfficerDaoImpl daoElectionOfficer;
 	@Autowired
 	ElectionResultDaoImpl daoElectionResult;
-	//@Autowired
-	//NominatedCandidateDaoImp daoNominatedCandidate;
+	@Autowired
+	NominatedCandidatesDaoImpl daoNominatedCandidate;
 	@Autowired
 	RegisteredSocietyVotersDaoImpl daoRegisteredSocietyVoters;
 	//@Autowired
 	//CooperativeSocietyDaoImpl daoCooperativeSociety;
-	//@Autowired
-	//UserDaoImpl daoUser;
+	@Autowired
+	UserDaoImpl daoUser;
 	@Autowired
 	VotedListDaoImpl daoVotedList;
 	
@@ -88,34 +90,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 	@Override
 	public boolean addNominatedCandidate(NominatedCandidates candidate) {
-		// TODO Auto-generated method stub
+		daoNominatedCandidate.save(candidate);		
 		return false;
 	}
 	@Override
 	public void updateNominatedCandidateDetails(NominatedCandidates candidate) {
-		// TODO Auto-generated method stub
+		daoNominatedCandidate.update(candidate);
 		
 	}
 	@Override
 	public void deleteNominatedCandididate(long candidateId) {
-		// TODO Auto-generated method stub
-		
+		daoNominatedCandidate.delete(candidateId);		
 	}
-	@Override
-	public void addSocietyDetails(CooperativeSociety society) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public boolean updateSocietyDetails(CooperativeSociety society) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean deleteSociety(long societyId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	@Override
 	public void voterRegistration(RegisteredSocietyVoters voter) {
 		daoRegisteredSocietyVoters.save(voter);
@@ -126,25 +113,45 @@ public class AdminServiceImpl implements AdminService {
 	daoRegisteredSocietyVoters.update(voter);
 		return true;
 	}
+	
 	@Override
 	public boolean deleteRegisteredVoter(long voterId) {
 		daoRegisteredSocietyVoters.delete(voterId);
 		return true;
 	}
+	
+	
 	@Override
-	public void registerUser(User user) {
+	public void addSocietyDetails(CooperativeSociety society) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public boolean updateUser(User user) {
+	public boolean updateSocietyDetails(CooperativeSociety society) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 	@Override
-	public boolean deleteUser(long userId) {
+	public boolean deleteSociety(long societyId) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	
+	@Override
+	public void registerUser(User user) {
+		daoUser.save(user);		
+	}
+	@Override
+	public boolean updateUser(User user) {
+		daoUser.update(user);
+		return true;
+	}
+	@Override
+	public boolean deleteUser(long userId) {
+		daoUser.delete(userId);
+		return true;
 	}
 	@Override
 	public void castVotedList(VotedList votedList) {

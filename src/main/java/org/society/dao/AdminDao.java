@@ -10,9 +10,9 @@ public interface AdminDao {
 
 	public Admin update(Admin ad) throws NoAdminFoundException;
 
-	public boolean delete(long adminId) throws NoAdminFoundException;
+	public boolean delete(long adminId) ;
 
-	Admin getAdmin(long adminId) throws NoAdminFoundException;
+	public Admin getAdmin(long adminId) throws NoAdminFoundException;
 
-	List<Admin> getAllAdmin();
+	public List<Admin> getAllAdmin();
 }

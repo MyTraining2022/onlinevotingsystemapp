@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @RestController
-@RequestMapping("ElectionResult")
+@RequestMapping("/api/ElectionResult")
 public class ElectionResultController {
 	@Autowired
 	private ElectionResultService service;

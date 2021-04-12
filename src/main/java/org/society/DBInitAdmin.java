@@ -15,6 +15,10 @@ public class DBInitAdmin implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Admin ad1 = new Admin(123L, "Life", "Dead");
 		repository.save(ad1);
+		Admin ad2 = new Admin(223L, "Water", "Fire");
+		repository.save(ad2);
+		Admin ad3 = new Admin(323L, "Bright", "Dark");
+		repository.save(ad3);
 	}
 
 }

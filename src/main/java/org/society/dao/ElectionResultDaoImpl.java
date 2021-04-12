@@ -35,7 +35,7 @@ public class ElectionResultDaoImpl implements ElectionResultDao {
 	}
 
 	@Override
-	public boolean delete(long candidateId) {
+	public boolean delete(long candidateId){
 		if (repository.existsById(candidateId)) {
 			repository.deleteById(candidateId);
 			return true;
