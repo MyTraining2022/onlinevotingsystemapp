@@ -55,7 +55,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User findByUserId(long userId) throws UserNotFoundException {
+	public User findByUserId(long userId) {
 		Optional<User> user = repository.findById(userId);
 		if (user.isPresent()) {
 			return user.get();
