@@ -24,50 +24,49 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @RestController
 @RequestMapping("/api/ElectionOfficer")
 public class ElectionOfficerController {
-	
+
 	@Autowired
 	private ElectionOfficerService service;
-	
-	
+
 	@GetMapping(value = "{id}")
 	public ResponseEntity<?> getElectionOfficerById(@PathVariable("id") long id) {
-		
+
 		ElectionOfficer officer = service.viewElectionOfficerById(id);
 		return new ResponseEntity<ElectionOfficer>(officer, HttpStatus.OK);
 	}
-	
+
 	@GetMapping
 	public List<ElectionOfficer> getListOfElectionOfficer() {
-		
+
 		List<ElectionOfficer> officerList = service.viewElectionOfficerList();
 		if (officerList.size() == 0) {
 			throw new EmptyDataException("No Election officer in database!");
 		}
 		return officerList;
 	}
-	
+
 	@PostMapping
 	public String addElectionOfficerDetails(@Valid @RequestBody ElectionOfficer officer) {
-		
-		
+
 		service.addElectionOfficerDetails(officer);
+
 		return "Election Officer Details added successfully!";
-		
+
 	}
-	
+
 	@PutMapping
 	public String updateElectionOfficerDetails(@Valid @RequestBody ElectionOfficer officer) {
-		
+
 		service.updateElectionOfficerDetails(officer);
-		
+
 		return "Election Officer details updated successfully!";
-		
+
 	}
-	
+
 	@DeleteMapping(value = "{id}")
 	public String deleteElectionOfficerDetailsById(@PathVariable("id") long id) {
 		service.deleteElectionOfficer(id);
-		
+
 		return "Election Officer details removed!";
 	}
 }
