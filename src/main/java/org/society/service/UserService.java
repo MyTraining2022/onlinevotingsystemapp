@@ -10,9 +10,9 @@ public interface UserService {
 
 	public User update(User user);
 
-	public boolean delete(int userId);
+	public boolean delete(long userId);
 
 	public List<User> viewUserList();
 
-	public User findByUserId(int userId);
+	public User findByUserId(long userId);
 }

@@ -2,14 +2,20 @@ package org.society.service;
 
 import java.util.List;
 
+import org.society.dao.UserDaoImpl;
 import org.society.entities.User;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+@Service
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	private UserDaoImpl dao;
 
 	@Override
 	public User save(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.save(user);
 	}
 
 	@Override
@@ -19,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean delete(int userId) {
+	public boolean delete(long userId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -31,9 +37,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public User findByUserId(long userId) {
+		
+		return dao.findByUserId(userId);
 	}
 
 }

@@ -1,7 +1,8 @@
 package org.society.controller;
 
 import org.society.entities.ElectionOfficer;
-import org.society.service.ElectionOfficerService;
+import org.society.entities.User;
+import org.society.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("ElectionOfficer")
-public class ElectionOfficerController {
+@RequestMapping("user")
+public class UserController {
 	
 	@Autowired
-	private ElectionOfficerService service;
+	private UserService service;
 	
 	@GetMapping(value = "{id}")
-	public ResponseEntity<?> getElectionOfficerById(@PathVariable("id") long id) {
-		ElectionOfficer officer = service.viewElectionOfficerById(id);
+	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
+		User user = service.findByUserId(id);
 
-		return new ResponseEntity<ElectionOfficer>(officer, HttpStatus.OK);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
+
 }
