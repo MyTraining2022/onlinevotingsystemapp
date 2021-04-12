@@ -8,7 +8,7 @@ import org.society.entities.NominatedCandidates;
 public interface ElectionResultService {
 	public void addElectionResult(ElectionResult result);
 	public boolean updateElectionResult(ElectionResult result);
-	public boolean deleteElectionResult(ElectionResult result);
+	public boolean deleteElectionResult(long candidateId);
 	public List<ElectionResult> viewElectionResultList();
 	public ElectionResult viewCandidatewiseResult(long candidateId);
 	public double viewVotingPercentage();

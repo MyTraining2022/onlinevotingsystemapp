@@ -26,8 +26,8 @@ public class ElectionResultServiceImpl implements ElectionResultService {
 	}
 
 	@Override
-	public boolean deleteElectionResult(ElectionResult result) {
-		dao.delete(result);
+	public boolean deleteElectionResult(long candidateId) {
+		dao.delete(candidateId);
 		return true;
 
 	}

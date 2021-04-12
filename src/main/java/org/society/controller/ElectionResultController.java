@@ -59,10 +59,10 @@ public class ElectionResultController {
 			throw new ElectionResultNotFoundException("Update", " Election Result not found");
 	}
 
-	@DeleteMapping("{Result}")
-	public String deleteResult(@PathVariable("Result") ElectionResult result) {
+	@DeleteMapping("{CandidateId}")
+	public String deleteResult(@PathVariable("CandidateId") long CandidateId) {
 
-		if (service.deleteElectionResult(result))
+		if (service.deleteElectionResult(CandidateId))
 			return "Election Result data successfully deleted";
 		else
 			throw new ElectionResultNotFoundException("Delete", "Election Result not found");
