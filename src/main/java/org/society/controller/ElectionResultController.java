@@ -20,12 +20,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @RestController
 @RequestMapping("ElectionResult")
 public class ElectionResultController {
 	@Autowired
 	ElectionResultService service;
-
+	
+	@JsonIgnore
 	@GetMapping
 	public List<ElectionResult> getAllResult() {
 		List<ElectionResult> list = service.viewElectionResultList();
@@ -34,7 +37,8 @@ public class ElectionResultController {
 		}
 		return list;
 	}
-
+	
+	@JsonIgnore
 	@GetMapping(value = "{CandidateId}")
 	public ResponseEntity<?> getResult(@PathVariable("CandidateId") long candidateId) {
 		ElectionResult er = service.viewCandidatewiseResult(candidateId );

@@ -28,6 +28,7 @@ public class ElectionOfficer implements Serializable {
 	private String password;
 	private String gender;
 	private String mobileno;
+	@Column(unique = true)
 	private String emailId;
 	private String address1;
 	private String address2;
