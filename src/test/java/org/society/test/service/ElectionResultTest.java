@@ -44,7 +44,7 @@ public class ElectionResultTest {
 		assertEquals(er1, erDao.save(er1));
 
 	}
-
+//UPDATE
 	/*
 	 * @Test
 	 * 
@@ -62,7 +62,7 @@ public class ElectionResultTest {
 	 * 
 	 * }
 	 */
-
+//DELETE
 	/*
 	@Test
 	@DisplayName("Test for deleting Election Result")
