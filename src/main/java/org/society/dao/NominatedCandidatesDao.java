@@ -7,8 +7,12 @@ import org.society.exceptions.NominatedCandidateNotFoundException;
 
 public interface NominatedCandidatesDao {
 	public NominatedCandidates save(NominatedCandidates candidate);
-	public NominatedCandidates update(NominatedCandidates candidate) throws NominatedCandidateNotFoundException;
+
+	public NominatedCandidates update(NominatedCandidates candidate);
+
 	public boolean delete(long candidateId) throws NominatedCandidateNotFoundException;
+
 	public List<NominatedCandidates> getNominatedCandidatesList();
-	public NominatedCandidates getByCandidateId(long id)throws NominatedCandidateNotFoundException;
+
+	public NominatedCandidates getByCandidateId(long id);
 }

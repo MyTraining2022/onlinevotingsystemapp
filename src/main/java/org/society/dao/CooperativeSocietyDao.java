@@ -7,9 +7,9 @@ import org.society.exceptions.SocietyNotFoundException;
 
 public interface CooperativeSocietyDao {
 	
-	public void save(CooperativeSociety society);
+	public CooperativeSociety save(CooperativeSociety society);
 
-	public boolean update(CooperativeSociety society) throws SocietyNotFoundException;
+	public CooperativeSociety update(CooperativeSociety society) throws SocietyNotFoundException;
 
 	public boolean delete(int societyId) throws SocietyNotFoundException;
 

@@ -14,20 +14,19 @@ public class NominatedCandidatesServiceImpl implements NominatedCandidatesServic
 	NominatedCandidatesDaoImpl dao;
 
 	@Override
-	public void saveNominatedCandidate(NominatedCandidates candidate) {
-       dao.save(candidate);		
+	public NominatedCandidates saveNominatedCandidate(NominatedCandidates candidate) {
+       return dao.save(candidate);		
 	}
 
 	@Override
-	public boolean updateNominatedCandidateDetails(NominatedCandidates candidate) {
-		dao.update(candidate);
-		return false;
+	public NominatedCandidates updateNominatedCandidateDetails(NominatedCandidates candidate) {
+		
+		return dao.update(candidate);
 	}
 
 	@Override
 	public boolean deleteNominatedCandididate(long candidateId) {
-		dao.delete(candidateId);
-		return false;
+		return dao.delete(candidateId);
 	}
 
 	@Override
