@@ -26,6 +26,8 @@ public class DBInitElectionResult implements CommandLineRunner {
 		ElectionResult er1 = new ElectionResult(121l, LocalDate.of(2021, 1, 26), nc, "Indra Nagar", 10000, 5000, 50,
 				2500, 50, "Win");
 		repo.save(er1);
+		
+		
 		RegisteredSocietyVoters rs2 = new RegisteredSocietyVoters(2l, "22345", "Shobit", "Kumar", "Bcrec1", "Male",
 				"gen", "1876543210", "shobit@email.com", "add1", "add23", "mondal", "Dis", 178543, false, cs);
 
@@ -33,6 +35,8 @@ public class DBInitElectionResult implements CommandLineRunner {
 		ElectionResult er2 = new ElectionResult(121l, LocalDate.of(2021, 1, 26), nc2, "Mohit Nagar", 20000, 10000, 50,
 				5000, 50, "Loss");
 		repo.save(er2);
+		
+		
 		RegisteredSocietyVoters rs3 = new RegisteredSocietyVoters(3l, "32345", "Aditya", "Kumar", "Bcrec3", "Male",
 				"obc", "2876543210", "aditya@email.com", "add1", "add23", "mondal", "Dis", 278543, true, cs);
 

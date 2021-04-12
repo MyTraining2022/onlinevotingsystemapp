@@ -26,8 +26,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @RequestMapping("ElectionResult")
 public class ElectionResultController {
 	@Autowired
-	ElectionResultService service;
-	
+	private ElectionResultService service;
+
 	@JsonIgnore
 	@GetMapping
 	public List<ElectionResult> getAllResult() {
@@ -37,11 +37,11 @@ public class ElectionResultController {
 		}
 		return list;
 	}
-	
+
 	@JsonIgnore
 	@GetMapping(value = "{CandidateId}")
 	public ResponseEntity<?> getResult(@PathVariable("CandidateId") long candidateId) {
-		ElectionResult er = service.viewCandidatewiseResult(candidateId );
+		ElectionResult er = service.viewCandidatewiseResult(candidateId);
 		if (er == null)
 			throw new ElectionResultNotFoundException("Request", "Election Result not found!");
 
@@ -57,19 +57,15 @@ public class ElectionResultController {
 	@PutMapping
 	public String updateResult(@Valid @RequestBody ElectionResult result) {
 
-		if (service.updateElectionResult(result)) {
-			return "Election Result successfully Updated";
-		} else
-			throw new ElectionResultNotFoundException("Update", " Election Result not found");
+		service.updateElectionResult(result);
+		return "Election Result successfully Updated";
 	}
 
 	@DeleteMapping("{CandidateId}")
 	public String deleteResult(@PathVariable("CandidateId") long CandidateId) {
 
-		if (service.deleteElectionResult(CandidateId))
-			return "Election Result data successfully deleted";
-		else
-			throw new ElectionResultNotFoundException("Delete", "Election Result not found");
+		service.deleteElectionResult(CandidateId);
+		return "Election Result data successfully deleted";
 
 	}
 

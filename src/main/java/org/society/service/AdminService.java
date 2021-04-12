@@ -11,11 +11,11 @@ import org.society.entities.User;
 import org.society.entities.VotedList;
 
 public interface AdminService {
-	public void addAdminDetails(Admin officer);
+	public void addAdminDetails(Admin admin);
 
-	public boolean updateAdminDetails(Admin officer);
+	public boolean updateAdminDetails(Admin admin);
 
-	public boolean deleteAdmin(long adminID);
+	public boolean deleteAdminDetails(long adminId);
 
 	public Admin viewAdminById(long adminId);
 

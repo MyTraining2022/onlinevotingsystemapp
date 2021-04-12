@@ -17,33 +17,30 @@ public class AdminDaoImp implements AdminDao {
 	AdminRepository repository;
 
 	@Override
-	public void save(Admin ad) throws DuplicateEntityFoundException {
+	public Admin save(Admin ad) throws DuplicateEntityFoundException {
 		if (repository.existsById(ad.getId())) {
 			throw new DuplicateEntityFoundException("Save Operation","Duplicate Admin Found");
 		}
-		if (ad != null) {
-			repository.save(ad);
-		}
+		
+			return repository.save(ad);
+		
 	}
 
 	@Override
-	public boolean update(Admin ad) throws NoAdminFoundException {
-		if (repository.existsById(ad.getId())) {
-			repository.save(ad);
-			return true;
-		} else {
-			throw new NoAdminFoundException("No Admin found to Update");
-		}
+	public Admin update(Admin ad) throws NoAdminFoundException {
+		if (!repository.existsById(ad.getId())) {
+			throw new NoAdminFoundException("Update","No Admin found to Update");
+		} 
+			return repository.save(ad);
 	}
 
 	@Override
-	public boolean delete(long adminId) throws NoAdminFoundException {
+	public boolean delete(long adminId){
 		if (repository.existsById(adminId)) {
 			repository.deleteById(adminId);
 			return true;
-		} else {
-			throw new NoAdminFoundException("No Admin found to delete");
-		}
+		} 
+		return false;
 	}
 
 	@Override

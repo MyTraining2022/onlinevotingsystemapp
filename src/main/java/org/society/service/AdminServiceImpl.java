@@ -14,7 +14,9 @@ import org.society.entities.RegisteredSocietyVoters;
 import org.society.entities.User;
 import org.society.entities.VotedList;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+@Service
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
@@ -45,7 +47,7 @@ public class AdminServiceImpl implements AdminService {
 		return true;
 	}
 	@Override
-	public boolean deleteAdmin(long adminID) {
+	public boolean deleteAdminDetails(long adminID) {
 		daoAdmin.delete(adminID);
 		return true;
 	}

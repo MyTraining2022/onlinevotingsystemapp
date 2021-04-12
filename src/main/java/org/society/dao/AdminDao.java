@@ -6,11 +6,11 @@ import org.society.entities.Admin;
 import org.society.exceptions.NoAdminFoundException;
 
 public interface AdminDao {
-	void save(Admin ad);
+	public Admin save(Admin ad);
 
-	boolean update(Admin ad) throws NoAdminFoundException;
+	public Admin update(Admin ad) throws NoAdminFoundException;
 
-	boolean delete(long adminId) throws NoAdminFoundException;
+	public boolean delete(long adminId) throws NoAdminFoundException;
 
 	Admin getAdmin(long adminId) throws NoAdminFoundException;
 
