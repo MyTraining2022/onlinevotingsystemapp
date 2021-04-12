@@ -20,20 +20,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User update(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.update(user);
 	}
 
 	@Override
 	public boolean delete(long userId) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return dao.delete(userId);
 	}
 
 	@Override
 	public List<User> viewUserList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.viewUserList();
 	}
 
 	@Override
